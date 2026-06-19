@@ -1,1058 +1,912 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scaling Digital Onboarding for 40,000 Households — Randall Ford</title>
-<link rel="canonical" href="https://rchhf-7.github.io/tricon-residential.html"/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="https://rchhf-7.github.io/tricon-residential.html"/>
-<meta property="og:title" content="Scaling Digital Onboarding for 40,000 Households — Randall Ford"/>
-<meta property="og:description" content="Owning the resident-app workstream inside a larger acquisition and payment-platform transition."/>
-<meta name="twitter:card" content="summary_large_image"/>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B1A17'/%3E%3Ccircle cx='24' cy='9' r='3' fill='%23D6452A'/%3E%3Ctext x='6' y='24' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23FBF8F3'%3ER%3C/text%3E%3C/svg%3E"/><meta name="description" content="Owning the resident-app workstream inside a larger acquisition and payment-platform transition."><style>
+<!DOCTYPE html>
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
-:root{
-  --paper:#F7F6F2;
-  --paper-2:#EEF1F4;
-  --paper-3:#E5E9ED;
-  --ink:#171B22;
-  --ink-2:#2A313B;
-  --muted:#66717D;
-  --line:#CFD6DD;
-  --line-dark:#9FAAB5;
-  --ultra:#2D3FAF;
-  --ultra-dark:#1E2B78;
-  --ultra-soft:#E5E9FF;
-  --vermilion:#D94A2F;
-  --mint:#CFE5DE;
-  --sand:#EBD5AF;
-  --lilac:#D9CCEA;
-  --rose:#E8C9D2;
-  --white:#FFFFFF;
-  --shadow:0 24px 70px rgba(27,34,48,.12);
-  --max:1180px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:
-    linear-gradient(rgba(247,246,242,.96),rgba(247,246,242,.96)),
-    repeating-linear-gradient(0deg,rgba(23,27,34,.035) 0 1px,transparent 1px 5px);
-  color:var(--ink);
-  font-family:Inter, ui-sans-serif, system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.5;
-}
-a{color:inherit;text-decoration:none}
-button{font:inherit}
-img{max-width:100%;display:block}
-.wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
-.serif{font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif}
-.skip{position:absolute;left:-999px;top:auto}
-.skip:focus{left:12px;top:12px;background:white;border:1px solid var(--ink);padding:10px 14px;z-index:1000}
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scaling Digital Onboarding for 40,000 Households — Randall Ford</title>
+<meta content="How Randall Ford owned the resident-app onboarding workstream through a major acquisition and payment-platform transition at Tricon Residential, reaching approximately 95% adoption in six weeks." name="description"/>
+<link href="https://rchhf-7.github.io/tricon-residential.html" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="https://rchhf-7.github.io/tricon-residential.html" property="og:url"/>
+<meta content="Scaling Digital Onboarding for 40,000 Households — Randall Ford" property="og:title"/>
+<meta content="How Randall Ford owned the resident-app onboarding workstream through a major acquisition and payment-platform transition at Tricon Residential, reaching approximately 95% adoption in six weeks." property="og:description"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23171B22'/%3E%3Ccircle cx='24' cy='9' r='3' fill='%23D94A2F'/%3E%3Ctext x='6' y='24' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23F7F6F2'%3ER%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --paper:#F7F6F2;
+      --paper-2:#EEF1F4;
+      --ink:#171B22;
+      --ink-2:#2A313B;
+      --muted:#66717D;
+      --line:#CFD6DD;
+      --ultra:#2D3FAF;
+      --ultra-dark:#1E2B78;
+      --vermilion:#D94A2F;
+      --sand:#EBD5AF;
+      --white:#FFFFFF;
+      --max:1180px;
+      --reading:760px;
+      --shadow:0 24px 70px rgba(27,34,48,.12);
+    }
 
-/* nav */
-.nav{
-  position:sticky;top:0;z-index:40;
-  background:rgba(247,246,242,.9);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(159,170,181,.55);
-}
-.nav__inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-weight:700;font-size:31px;letter-spacing:-.045em;
-}
-.nav__links{display:flex;gap:27px;align-items:center;font-size:13px;font-weight:750}
-.nav__links a{position:relative}
-.nav__links a:after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--ultra);transition:.22s}
-.nav__links a:hover:after{right:0}
-.nav__index{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:800}
-.nav__toggle{display:none;border:0;background:none;font-size:24px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        linear-gradient(rgba(247,246,242,.97),rgba(247,246,242,.97)),
+        repeating-linear-gradient(0deg,rgba(23,27,34,.03) 0 1px,transparent 1px 5px);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-size:16px;
+      line-height:1.68;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 28px));margin-inline:auto}
+    .skip{position:absolute;left:-999px;top:auto}
+    .skip:focus{left:12px;top:12px;background:white;border:1px solid var(--ink);padding:10px 14px;z-index:1000}
 
-/* recurring labels */
-.kicker,.eyebrow{
-  font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.19em;color:var(--ultra);
-}
-.editorial-index{
-  font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.17em;color:var(--muted);
-}
-.rule-label{display:flex;align-items:center;gap:14px}
-.rule-label:after{content:"";height:1px;background:var(--line);flex:1}
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(247,246,242,.92);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(159,170,181,.55);
+    }
+    .nav__inner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:28px;
+      line-height:1;
+      letter-spacing:-.03em;
+      white-space:nowrap;
+    }
+    .nav__links{
+      display:none;
+      position:absolute;
+      top:70px;
+      left:0;
+      right:0;
+      margin:0;
+      padding:12px 20px 22px;
+      list-style:none;
+      background:rgba(247,246,242,.98);
+      border-bottom:1px solid var(--line);
+    }
+    .nav__links.is-open{display:grid}
+    .nav__links a{display:block;padding:11px 0;font-size:14px;font-weight:700}
+    .nav__toggle{border:0;background:transparent;font-size:24px;line-height:1;cursor:pointer;padding:8px}
 
-/* hero */
-.hero{padding:82px 0 72px;overflow:hidden}
-.hero__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:70px;align-items:center}
-.hero__copy{position:relative}
-.hero__copy:before{
-  content:"RF / 01";position:absolute;right:10px;top:0;
-  font-size:10px;font-weight:800;letter-spacing:.18em;color:var(--muted);
-}
-.hero h1{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:clamp(58px,6.4vw,96px);
-  line-height:.94;letter-spacing:-.058em;
-  margin:19px 0 26px;max-width:790px;
-}
-.hero h1 em{font-style:italic;color:var(--ultra)}
-.hero__lead{font-size:18px;color:#4E5965;max-width:680px;margin:0 0 31px}
-.hero__actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  border:1px solid var(--ink);border-radius:999px;
-  padding:13px 18px;font-size:13px;font-weight:850;
-  transition:.22s ease;
-}
-.btn:hover{transform:translateY(-2px)}
-.btn--primary{background:var(--ink);color:white}
-.btn--light{background:white;border-color:white;color:var(--ink)}
-.btn--ghost{background:transparent}
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:26px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+    .back-link:hover{color:var(--ink)}
+    .eyebrow{
+      margin:0;
+      color:var(--ultra);
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
 
-/* Hero art */
-.hero-art{
-  min-height:550px;position:relative;border:1px solid var(--line);
-  border-radius:34px;background:var(--white);overflow:hidden;box-shadow:var(--shadow);
-}
-.hero-art:before{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(90deg,transparent 0 63px,rgba(23,27,34,.035) 64px);
-  pointer-events:none;
-}
-.art-sheet{
-  position:absolute;border:1px solid rgba(255,255,255,.35);border-radius:26px;
-  box-shadow:0 28px 70px rgba(24,30,50,.18);
-}
-.art-sheet--back{
-  width:67%;height:63%;right:2%;top:4%;
-  background:var(--sand);transform:rotate(8deg);
-}
-.art-sheet--mid{
-  width:72%;height:68%;left:4%;top:13%;
-  background:linear-gradient(145deg,var(--ultra),var(--ultra-dark));color:white;
-  transform:rotate(-4deg);padding:34px;overflow:hidden;
-}
-.art-sheet--mid:before{
-  content:"";position:absolute;width:330px;height:330px;border-radius:50%;
-  right:-100px;bottom:-160px;border:1px solid rgba(255,255,255,.45);
-  box-shadow:0 0 0 64px rgba(255,255,255,.06),0 0 0 128px rgba(255,255,255,.035);
-}
-.art-sheet--mid small{font-size:9px;text-transform:uppercase;letter-spacing:.18em;font-weight:850;color:#DDE2FF}
-.art-sheet--mid strong{
-  display:block;font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:43px;line-height:.99;letter-spacing:-.045em;
-  margin-top:102px;max-width:350px;position:relative;
-}
-.art-sheet--front{
-  width:59%;height:45%;right:6%;bottom:6%;
-  background:white;transform:rotate(3deg);padding:26px;
-}
-.art-sheet--front .tiny{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:850}
-.art-sheet--front h3{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:31px;line-height:1.02;margin:45px 0 12px;letter-spacing:-.035em;
-}
-.art-sheet--front p{font-size:13px;color:var(--muted);max-width:290px}
-.art-tab{
-  position:absolute;left:0;bottom:20px;background:var(--vermilion);color:white;
-  padding:9px 16px 9px 20px;font-size:9px;font-weight:850;text-transform:uppercase;letter-spacing:.16em;
-  border-radius:0 999px 999px 0;
-}
-.art-stamp{
-  position:absolute;right:24px;top:24px;width:58px;height:58px;border:1px solid var(--line-dark);
-  border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:900;color:var(--muted);
-  transform:rotate(10deg);
-}
+    .case-hero{padding:40px 0 34px}
+    .case-hero__grid{display:grid;gap:30px}
+    .case-hero h1{
+      max-width:760px;
+      margin:11px 0 17px;
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:clamp(40px,10vw,64px);
+      line-height:1.02;
+      letter-spacing:-.025em;
+      text-wrap:balance;
+    }
+    .case-hero__dek{
+      max-width:680px;
+      margin:0;
+      color:#4E5965;
+      font-size:17px;
+      line-height:1.65;
+    }
+    .case-hero__role{
+      margin:20px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
 
-/* proof */
-.proof{background:white;border-block:1px solid var(--line)}
-.proof__grid{display:grid;grid-template-columns:repeat(3,1fr)}
-.proof__item{padding:34px 28px;border-right:1px solid var(--line);position:relative}
-.proof__item:last-child{border-right:0}
-.proof__item:before{
-  content:attr(data-index);position:absolute;right:20px;top:18px;
-  font-size:9px;font-weight:850;letter-spacing:.16em;color:var(--muted)
-}
-.proof__item strong{
-  display:block;font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:34px;line-height:1.02;letter-spacing:-.035em;
-}
-.proof__item span{display:block;color:var(--muted);font-size:13px;margin-top:8px;max-width:290px}
+    /* Ported from the approved homepage card treatment. */
+    .marvel-visual{
+      position:relative;
+      min-height:315px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:linear-gradient(140deg,#161B29,#273460 60%,#40203B);
+      box-shadow:var(--shadow);
+    }
+    .marvel-visual:before{
+      content:"";
+      position:absolute;
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      right:8%;
+      top:14%;
+      background:var(--vermilion);
+      box-shadow:-92px 72px 0 -28px var(--sand);
+    }
+    .marvel-visual:after{
+      content:"MARVEL\A COLLECT";
+      white-space:pre;
+      position:absolute;
+      left:24px;
+      bottom:20px;
+      z-index:5;
+      color:white;
+      font-family:"Arial Black",Impact,Arial,sans-serif;
+      font-size:37px;
+      line-height:.82;
+      letter-spacing:-.08em;
+      text-shadow:0 3px 12px rgba(0,0,0,.34);
+    }
+    .visual-label{
+      position:absolute;
+      left:24px;
+      top:22px;
+      z-index:4;
+      color:white;
+      font-size:9px;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+    .visual-stamp{
+      position:absolute;
+      right:18px;
+      top:18px;
+      z-index:4;
+      width:52px;
+      height:52px;
+      border:1px solid rgba(255,255,255,.5);
+      border-radius:50%;
+      color:white;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      font-size:9px;
+      font-weight:800;
+      line-height:1.15;
+      transform:rotate(8deg);
+    }
+    .marvel-card{
+      position:absolute;
+      right:27%;
+      bottom:-14px;
+      width:125px;
+      height:170px;
+      padding:8px;
+      border:8px solid white;
+      background:#F8F4EC;
+      transform:rotate(8deg);
+      box-shadow:0 22px 35px rgba(0,0,0,.28);
+    }
+    .marvel-card:before{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border-radius:50% 50% 38% 62%/55% 40% 60% 45%;
+      background:linear-gradient(145deg,var(--vermilion),var(--ultra));
+    }
+    .marvel-card:after{
+      content:"LIMITED";
+      position:absolute;
+      left:11px;
+      right:11px;
+      bottom:11px;
+      padding-top:5px;
+      border-top:1px solid #B9B0A5;
+      color:#6D655E;
+      font-size:7px;
+      font-weight:800;
+      letter-spacing:.16em;
+    }
 
-/* brands */
-.brands{padding:68px 0 73px;background:#FBFCFD;border-bottom:1px solid var(--line)}
-.brands__title{text-align:center;color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.22em;margin-bottom:31px}
-.brands__row{
-  display:flex;justify-content:center;align-items:center;gap:36px 48px;flex-wrap:wrap;
-}
-.brands__row span{color:#5B6570;font-size:29px;letter-spacing:-.04em;font-weight:800}
-.brands__row .serifmark{font-family:Georgia,serif;font-style:italic;font-weight:700}
-.brands__row .wide{letter-spacing:.02em;font-size:22px}
-.brands__row .condensed{font-stretch:condensed;text-transform:uppercase;letter-spacing:-.06em}
+    .summary{padding:0 0 46px}
+    .summary__grid{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:white;
+      overflow:hidden;
+    }
+    .summary__item{padding:20px;border-bottom:1px solid var(--line)}
+    .summary__item:last-child{border-bottom:0}
+    .summary__label{
+      display:block;
+      margin-bottom:7px;
+      color:var(--ultra);
+      font-size:9px;
+      font-weight:800;
+      letter-spacing:.17em;
+      text-transform:uppercase;
+    }
+    .summary__item p{margin:0;color:#4E5965;font-size:14px;line-height:1.6}
 
-/* sections */
-.section{padding:96px 0}
-.section--cool{background:var(--paper-2);border-block:1px solid var(--line)}
-.section__head{
-  display:grid;grid-template-columns:.72fr 1.28fr;gap:70px;align-items:start;margin-bottom:43px
-}
-.section__head h2,.work__intro h2{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:56px;line-height:1;letter-spacing:-.045em;margin:14px 0 0;
-}
-.section__head p{font-size:19px;color:var(--muted);margin:8px 0 0;max-width:720px}
-.section__head strong{color:var(--ink)}
+    .story{padding:54px 0 70px;border-top:1px solid var(--line);background:rgba(255,255,255,.36)}
+    .article{width:min(var(--reading),100%);margin-inline:auto}
+    .article section{margin:0 0 44px}
+    .article section:last-child{margin-bottom:0}
+    .article h2{
+      margin:0 0 15px;
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:clamp(31px,7vw,40px);
+      line-height:1.06;
+      letter-spacing:-.018em;
+    }
+    .article p{
+      margin:0 0 17px;
+      color:#39434D;
+      font-size:17px;
+      line-height:1.78;
+    }
+    .article p:last-child{margin-bottom:0}
 
-/* operating model */
-.operating{
-  display:grid;grid-template-columns:.82fr 1.18fr;gap:18px;
-}
-.operating__feature{
-  min-height:500px;border-radius:34px;padding:42px;
-  background:linear-gradient(145deg,var(--ultra),var(--ultra-dark));color:white;
-  position:relative;overflow:hidden;
-}
-.operating__feature:before{
-  content:"";position:absolute;inset:0;
-  background:
-    linear-gradient(90deg,transparent 0 49%,rgba(255,255,255,.1) 49% 49.3%,transparent 49.3%),
-    linear-gradient(0deg,transparent 0 58%,rgba(255,255,255,.08) 58% 58.3%,transparent 58.3%);
-}
-.operating__feature:after{
-  content:"";position:absolute;width:430px;height:430px;border-radius:50%;
-  right:-130px;bottom:-210px;border:1px solid rgba(255,255,255,.42);
-  box-shadow:0 0 0 70px rgba(255,255,255,.06),0 0 0 140px rgba(255,255,255,.035);
-}
-.operating__feature .eyebrow{color:#DBE0FF}
-.operating__feature h2{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:58px;line-height:.98;letter-spacing:-.045em;
-  margin:26px 0 20px;max-width:560px;position:relative
-}
-.operating__feature p{font-size:18px;color:#E1E5FF;max-width:520px;position:relative}
-.operating__feature .feature-index{
-  position:absolute;right:26px;top:23px;font-size:9px;letter-spacing:.18em;color:#C5CCFF;font-weight:850
-}
-.operating__steps{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.step{
-  background:white;border:1px solid var(--line);border-radius:26px;
-  padding:27px;min-height:240px;position:relative;overflow:hidden;
-  transition:.24s ease;
-}
-.step:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(27,34,48,.1)}
-.step:after{
-  content:"";position:absolute;width:120px;height:120px;border-radius:50%;
-  right:-50px;bottom:-60px;background:var(--ultra-soft);transition:.24s
-}
-.step:hover:after{transform:scale(1.18)}
-.step__num{font-size:10px;font-weight:900;letter-spacing:.15em;color:var(--muted);text-transform:uppercase}
-.step h3{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:32px;line-height:1.03;margin:63px 0 10px;letter-spacing:-.035em;
-}
-.step p{font-size:14px;color:var(--muted);margin:0;max-width:260px}
+    .actions{border-top:1px solid var(--line)}
+    .action{padding:24px 0 26px;border-bottom:1px solid var(--line)}
+    .action h3{
+      margin:0 0 10px;
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:24px;
+      line-height:1.12;
+      letter-spacing:-.012em;
+    }
+    .action p{margin:0}
 
-/* work */
-.work__intro{max-width:920px;margin-bottom:44px}
-.work__intro p{font-size:18px;color:var(--muted);max-width:720px}
-.work__grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.case{
-  min-height:465px;border:1px solid var(--line);border-radius:32px;background:white;
-  position:relative;overflow:hidden;display:flex;flex-direction:column;
-  transition:.28s ease;
-}
-.case:hover{transform:translateY(-5px);box-shadow:0 25px 65px rgba(27,34,48,.14)}
-.case__visual{height:225px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-.case__meta{display:flex;justify-content:space-between;align-items:center;padding:24px 28px 0}
-.case__company{
-  font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)
-}
-.case__number{font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--muted)}
-.case__body{padding:20px 28px 28px;display:flex;flex-direction:column;flex:1}
-.case h3{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:40px;line-height:1;letter-spacing:-.04em;margin:0 0 13px;
-}
-.case__body p{font-size:15px;color:#59646F;margin:0;max-width:470px}
-.case__result{
-  margin-top:auto;padding-top:25px;font-size:13px;font-weight:900;display:flex;justify-content:space-between;align-items:center
-}
-.case__result:after{content:"↗";width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center}
-.case__hover{
-  position:absolute;inset:auto 0 0;background:rgba(23,27,34,.96);color:white;
-  padding:22px 28px;transform:translateY(100%);transition:.28s ease;
-  font-size:12px;line-height:1.65;letter-spacing:.01em;
-}
-.case:hover .case__hover{transform:none}
+    .results{
+      margin-top:20px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:white;
+    }
+    .results__stats{display:grid}
+    .result-stat{padding:23px 22px;border-bottom:1px solid var(--line)}
+    .result-stat:last-child{border-bottom:0}
+    .result-stat strong{
+      display:block;
+      color:var(--ultra);
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:39px;
+      line-height:1;
+      letter-spacing:-.02em;
+    }
+    .result-stat span{display:block;margin-top:6px;color:var(--muted);font-size:13px}
+    .results__copy{padding:23px 22px;background:var(--paper-2)}
+    .results__copy p{margin:0}
 
-/* project visuals */
-.visual-label{
-  position:absolute;left:24px;top:22px;color:white;font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:900;z-index:4
-}
-.visual-stamp{
-  position:absolute;right:18px;top:18px;width:52px;height:52px;border:1px solid rgba(255,255,255,.5);
-  color:white;border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:900;transform:rotate(8deg);z-index:4
-}
-.visual--marvel{background:linear-gradient(140deg,#161B29,#273460 60%,#40203B)}
-.visual--marvel:before{
-  content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:8%;top:14%;
-  background:var(--vermilion);box-shadow:-92px 72px 0 -28px var(--sand);
-}
-.visual--marvel:after{
-  content:"MARVEL\A COLLECT";white-space:pre;position:absolute;left:24px;bottom:18px;color:white;
-  font-family:"Arial Black",Arial,sans-serif;font-size:37px;line-height:.82;letter-spacing:-.08em
-}
-.marvel-card{
-  position:absolute;right:27%;bottom:-14px;width:125px;height:170px;background:#F8F4EC;border:8px solid white;
-  transform:rotate(8deg);box-shadow:0 22px 35px rgba(0,0,0,.28)
-}
-.marvel-card:before{content:"";position:absolute;inset:12px;background:linear-gradient(145deg,#D94A2F,#2D3FAF);border-radius:50% 50% 38% 62%/55% 40% 60% 45%}
-.marvel-card:after{content:"LIMITED";position:absolute;left:11px;right:11px;bottom:11px;border-top:1px solid #B9B0A5;padding-top:5px;font-size:7px;letter-spacing:.16em;font-weight:900;color:#6D655E}
+    .capabilities{
+      margin-top:28px;
+      padding-top:20px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.65;
+    }
+    .capabilities strong{color:var(--ink)}
 
-.visual--tricon{background:linear-gradient(145deg,#CDE5DE,#96C8BE)}
-.visual--tricon:before{
-  content:"";position:absolute;width:315px;height:315px;border-radius:50%;left:-50px;bottom:-180px;
-  border:1px solid rgba(23,27,34,.22);box-shadow:0 0 0 54px rgba(255,255,255,.2),0 0 0 108px rgba(255,255,255,.1)
-}
-.visual--tricon:after{
-  content:"40K";position:absolute;right:26px;bottom:10px;color:#263B3A;
-  font-family:"Bodoni 72",Didot,Georgia,serif;font-size:79px;line-height:1;letter-spacing:-.06em
-}
-.tricon-phone{
-  position:absolute;width:112px;height:195px;left:43%;top:16px;background:#15202C;border-radius:22px;padding:8px;
-  transform:rotate(-6deg);box-shadow:0 20px 35px rgba(24,47,46,.25)
-}
-.tricon-phone:before{content:"";position:absolute;inset:13px 9px 10px;background:white;border-radius:15px}
-.tricon-phone:after{
-  content:"PAYMENT\A READY";white-space:pre;position:absolute;left:22px;top:56px;color:#1A302D;
-  font-size:9px;font-weight:900;letter-spacing:.12em;line-height:1.55
-}
+    .next-case{padding:58px 0 72px}
+    .next-case__card{
+      display:grid;
+      gap:22px;
+      padding:28px 23px;
+      border-radius:27px;
+      background:var(--ink);
+      color:white;
+    }
+    .next-case__card h2{
+      margin:8px 0 6px;
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:32px;
+      line-height:1.05;
+    }
+    .next-case__card p{margin:0;color:#BFC7D1;font-size:14px}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      width:100%;
+      min-height:48px;
+      padding:12px 18px;
+      border:1px solid white;
+      border-radius:999px;
+      background:white;
+      color:var(--ink);
+      font-size:13px;
+      font-weight:800;
+      transition:transform .2s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
 
-.visual--quidd{background:linear-gradient(145deg,#EBD5AF,#D8B268)}
-.visual--quidd:before{
-  content:"";position:absolute;width:128px;height:178px;left:31%;top:26px;border-radius:18px;
-  background:var(--ultra);transform:rotate(-10deg);box-shadow:18px 17px 0 rgba(255,255,255,.65),36px 34px 0 rgba(23,27,34,.14)
-}
-.visual--quidd:after{
-  content:"QUIDD";position:absolute;right:26px;bottom:16px;color:#2F2B20;
-  font-family:"Bodoni 72",Didot,Georgia,serif;font-size:49px;font-style:italic;letter-spacing:-.06em
-}
-.quidd-seal{
-  position:absolute;left:18px;bottom:20px;width:73px;height:73px;border-radius:50%;border:1px solid rgba(23,27,34,.28);
-  display:grid;place-items:center;color:#574825;font-size:8px;font-weight:900;letter-spacing:.15em;transform:rotate(-10deg)
-}
+    .footer{padding:27px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+    .footer__inner{display:grid;gap:9px}
 
-.visual--cryptkins{background:linear-gradient(145deg,#E8C9D2,#D9CCEA)}
-.visual--cryptkins:before{
-  content:"";position:absolute;width:165px;height:125px;border-radius:54% 46% 42% 58%;
-  background:#513A73;left:41%;top:55px;transform:rotate(-5deg);
-}
-.visual--cryptkins:after{
-  content:"";position:absolute;width:31px;height:31px;border-radius:50%;background:white;left:49%;top:91px;
-  box-shadow:53px 0 0 white,9px 5px 0 -9px #171B22,62px 5px 0 -9px #171B22;
-}
-.cryptkins-horns:before,.cryptkins-horns:after{
-  content:"";position:absolute;width:38px;height:48px;background:#513A73;top:37px;border-radius:70% 30% 70% 30%
-}
-.cryptkins-horns:before{left:44%;transform:rotate(-28deg)}
-.cryptkins-horns:after{left:59%;transform:rotate(28deg) scaleX(-1)}
-.cryptkins-title{
-  position:absolute;left:24px;bottom:17px;font-family:"Bodoni 72",Didot,Georgia,serif;
-  color:#352640;font-size:44px;font-style:italic;letter-spacing:-.06em
-}
+    @media (max-width:699px){
+      .marvel-visual:after{
+        left:17px;
+        bottom:15px;
+        font-size:27px;
+        line-height:.84;
+        letter-spacing:-.07em;
+      }
+      .marvel-card{right:12%;width:104px;height:145px}
+    }
 
-/* capability index */
-.capability{
-  background:white;border-block:1px solid var(--line);
-}
-.capability__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px}
-.capability h2{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:55px;line-height:1;letter-spacing:-.045em;margin:14px 0 35px;
-}
-.cap-list{border-top:1px solid var(--ink)}
-.cap-row{
-  display:grid;grid-template-columns:52px 1fr auto;gap:18px;align-items:center;
-  padding:23px 0;border-bottom:1px solid var(--line)
-}
-.cap-row span{font-size:10px;letter-spacing:.15em;font-weight:900;color:var(--muted)}
-.cap-row strong{font-family:"Bodoni 72",Didot,Georgia,serif;font-size:28px;letter-spacing:-.025em}
-.cap-row i{
-  font-style:normal;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--ultra)
-}
-.exp-card{
-  background:var(--paper-2);border:1px solid var(--line);border-radius:30px;padding:34px;position:relative;overflow:hidden
-}
-.exp-card:after{
-  content:"RF / 05";position:absolute;right:23px;top:20px;font-size:9px;letter-spacing:.18em;color:var(--muted);font-weight:900
-}
-.exp-card h3{
-  font-family:"Bodoni 72",Didot,Georgia,serif;font-size:36px;line-height:1.04;margin:15px 0 27px;letter-spacing:-.035em
-}
-.exp-group{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:16px 0;border-top:1px solid var(--line)}
-.exp-group b{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
-.exp-group p{margin:0;color:var(--muted);font-size:14px}
+    @media (min-width:700px){
+      .wrap{width:min(var(--max),calc(100% - 56px))}
+      .nav__inner{height:76px}
+      .nav__toggle{display:none}
+      .nav__links{
+        display:flex;
+        position:static;
+        align-items:center;
+        gap:27px;
+        padding:0;
+        background:none;
+        border:0;
+      }
+      .nav__links a{padding:0;font-size:13px;position:relative}
+      .nav__links a:after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--ultra);transition:.2s}
+      .nav__links a:hover:after{right:0}
+      .case-hero{padding:58px 0 46px}
+      .case-hero__grid{grid-template-columns:1.03fr .97fr;align-items:center;gap:52px}
+      .case-hero h1{font-size:clamp(50px,5.5vw,66px)}
+      .marvel-visual{min-height:390px;border-radius:32px}
+      .marvel-visual:before{width:235px;height:235px;right:7%;top:13%;box-shadow:-118px 88px 0 -34px var(--sand)}
+      .marvel-visual:after{left:28px;bottom:24px;font-size:42px}
+      .marvel-card{right:24%;bottom:-16px;width:142px;height:194px}
+      .summary{padding-bottom:58px}
+      .summary__grid{display:grid;grid-template-columns:repeat(3,1fr)}
+      .summary__item{padding:22px 23px;border-bottom:0;border-right:1px solid var(--line)}
+      .summary__item:last-child{border-right:0}
+      .story{padding:70px 0 86px}
+      .article section{margin-bottom:52px}
+      .action{padding:27px 0 29px}
+      .action h3{font-size:26px}
+      .results__stats{grid-template-columns:1fr 1fr}
+      .result-stat{border-bottom:0;border-right:1px solid var(--line)}
+      .result-stat:last-child{border-right:0}
+      .results__copy{padding:28px 29px}
+      .next-case__card{grid-template-columns:1fr auto;align-items:center;padding:36px 39px}
+      .btn{width:auto;min-width:205px}
+      .footer__inner{display:flex;justify-content:space-between;gap:20px}
+    }
 
-/* CTA */
-.cta{padding:92px 0}
-.cta__card{
-  background:linear-gradient(145deg,var(--ultra),var(--ultra-dark));color:white;border-radius:38px;
-  padding:58px 62px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;position:relative;overflow:hidden
-}
-.cta__card:before{
-  content:"";position:absolute;width:370px;height:370px;border-radius:50%;right:-120px;top:-210px;
-  border:1px solid rgba(255,255,255,.35);box-shadow:0 0 0 70px rgba(255,255,255,.055),0 0 0 140px rgba(255,255,255,.03)
-}
-.cta__card:after{content:"RF / 06";position:absolute;right:28px;top:23px;font-size:9px;letter-spacing:.18em;color:#C7CEFF;font-weight:900}
-.cta h2{
-  font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
-  font-size:61px;line-height:.98;letter-spacing:-.045em;margin:15px 0 18px
-}
-.cta p{font-size:18px;color:#E3E7FF;max-width:760px;margin:0}
-.footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
-.footer__inner{display:flex;justify-content:space-between;gap:20px}
+    @media (min-width:700px) and (max-width:899px){
+      .nav__toggle{display:block}
+      .nav__links{
+        display:none;
+        position:absolute;
+        top:76px;
+        left:0;
+        right:0;
+        padding:12px 28px 22px;
+        background:rgba(247,246,242,.98);
+        border-bottom:1px solid var(--line);
+      }
+      .nav__links.is-open{display:grid}
+      .nav__links a{display:block;padding:11px 0;font-size:14px}
+      .nav__links a:after{display:none}
+      .case-hero__grid{grid-template-columns:1fr}
+      .marvel-visual{min-height:355px}
+    }
 
-/* responsive */
-@media(max-width:980px){
-  .hero__grid,.section__head,.operating,.capability__grid{grid-template-columns:1fr}
-  .hero-art{min-height:500px}
-  .proof__grid{grid-template-columns:1fr}
-  .proof__item{border-right:0;border-bottom:1px solid var(--line)}
-  .proof__item:last-child{border-bottom:0}
-  .operating__feature{min-height:420px}
-  .work__grid{grid-template-columns:1fr}
-  .case{min-height:445px}
-}
-@media(max-width:720px){
-  .wrap{width:min(var(--max),calc(100% - 28px))}
-  .nav__links{display:none}
-  .nav__toggle{display:block}
-  .nav__index{display:none}
-  .hero{padding:52px 0 56px}
-  .hero__grid{gap:40px}
-  .hero h1{font-size:52px}
-  .hero__lead{font-size:16px}
-  .hero__copy:before{display:none}
-  .hero-art{min-height:420px;border-radius:26px}
-  .art-sheet--back{width:72%;height:58%;right:-4%;top:4%}
-  .art-sheet--mid{width:78%;height:66%;left:2%;padding:25px}
-  .art-sheet--mid strong{font-size:34px;margin-top:74px}
-  .art-sheet--front{width:72%;height:44%;right:3%;padding:20px}
-  .art-sheet--front h3{font-size:25px;margin-top:32px}
-  .art-stamp{width:48px;height:48px}
-  .brands{padding:55px 0}
-  .brands__row{gap:22px 28px}
-  .brands__row span{font-size:24px}
-  .section{padding:70px 0}
-  .section__head h2,.work__intro h2,.capability h2{font-size:44px}
-  .section__head{gap:18px;margin-bottom:32px}
-  .section__head p{font-size:16px}
-  .operating__feature{padding:31px;min-height:385px;border-radius:28px}
-  .operating__feature h2{font-size:45px}
-  .operating__steps{grid-template-columns:1fr}
-  .step{min-height:195px}
-  .step h3{margin-top:42px}
-  .case{min-height:470px;border-radius:26px}
-  .case__visual{height:215px}
-  .case__meta{padding:21px 23px 0}
-  .case__body{padding:18px 23px 24px}
-  .case h3{font-size:36px}
-  .case__hover{position:static;transform:none;background:var(--paper-2);color:var(--muted);padding:15px 23px;font-size:11px;border-top:1px solid var(--line)}
-  .case:hover{transform:none}
-  .case__result{margin-top:24px}
-  .capability__grid{gap:45px}
-  .cap-row strong{font-size:23px}
-  .exp-card{padding:28px 24px}
-  .exp-group{grid-template-columns:1fr;gap:7px}
-  .cta{padding:70px 0}
-  .cta__card{grid-template-columns:1fr;padding:38px 30px;border-radius:28px}
-  .cta h2{font-size:46px}
-  .footer__inner{display:block}
-}
-@media(prefers-reduced-motion:reduce){
-  *{scroll-behavior:auto!important;transition:none!important}
-}
+    @media (min-width:1050px){
+      .case-hero{padding:68px 0 54px}
+      .case-hero__grid{gap:68px}
+      .case-hero__dek{font-size:18px}
+      .summary{padding-bottom:68px}
+    }
 
-/* === V4 targeted reference reverts === */
-/* Microbrand circle: V1 geometry, heavier 35% watermark line. */
-.art-stamp,
-.visual-stamp{
-  border-width:2px !important;
-  border-style:solid !important;
-  border-color:currentColor !important;
-  opacity:.35;
-  transform:rotate(6deg);
-  box-shadow:none !important;
-}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*:before,*:after{transition:none!important}
+    }
+  
 
-/* Mobile-first hero card composition: preserve V1 stack, keep all copy legible. */
-.hero-art{min-height:470px}
-.art-sheet--back{width:70%;height:57%;right:1%;top:4%}
-.art-sheet--mid{width:78%;height:64%;left:3%;top:12%;padding:28px}
-.art-sheet--mid strong{font-size:36px;line-height:1.03;margin-top:64px;max-width:360px}
-.art-sheet--front{width:67%;height:39%;right:3%;bottom:5%;padding:22px}
-.art-sheet--front h3{font-size:25px;line-height:1.08;margin:26px 0 8px}
-.art-sheet--front p{font-size:12px;line-height:1.4;max-width:300px;padding-right:4px}
-.art-tab{bottom:13px;font-size:8px}
-
-/* V3 text spacing applied to all V1 case-study cards. */
-.case__body{padding:15px 27px 27px;min-height:235px;display:flex;flex-direction:column}
-.case h3{font-size:37px;line-height:1.05;margin:0 0 12px}
-.case__body p{font-size:15px;line-height:1.55;color:#59646F;margin:0;max-width:470px}
-.case__result{margin-top:auto;padding-top:23px}
-
-/* V1 operating-model card with the revised title. */
-.section--cool .operating{margin-top:0}
-.operating__feature h2{max-width:620px}
-
-/* Botanical Cryptkins image. */
-.visual--cryptkins{background:#DCE8E2}
-.visual--cryptkins:before,
-.visual--cryptkins:after{display:none !important}
-.botanical-art{position:absolute;inset:0;width:100%;height:100%;display:block}
-.botanical-title{
-  position:absolute;left:24px;bottom:16px;z-index:4;
-  font-family:"Bodoni 72",Didot,Georgia,serif;
-  font-size:43px;font-style:italic;letter-spacing:-.055em;color:#263D38;
-  text-shadow:0 1px 0 rgba(255,255,255,.45)
-}
-
-/* V1 CTA with three readable actions. */
-.cta__buttons{display:flex;gap:12px;align-items:center;justify-content:flex-end;flex-wrap:wrap;position:relative;z-index:2}
-.btn--outline-light{color:white;border-color:rgba(255,255,255,.78);background:transparent}
-.btn--outline-light:hover{background:rgba(255,255,255,.1)}
-.cta__buttons .btn{min-width:120px}
-
-@media(min-width:721px){
-  .hero-art{min-height:540px}
-  .art-sheet--back{width:67%;height:61%;right:2%;top:4%}
-  .art-sheet--mid{width:73%;height:66%;left:4%;top:12%;padding:34px}
-  .art-sheet--mid strong{font-size:41px;margin-top:84px;max-width:380px}
-  .art-sheet--front{width:62%;height:39%;right:5%;bottom:6%;padding:24px}
-  .art-sheet--front h3{font-size:28px;margin-top:31px}
-}
-
-@media(max-width:720px){
-  .hero-art{min-height:455px}
-  .art-sheet--back{width:72%;height:54%;right:-2%;top:4%}
-  .art-sheet--mid{width:82%;height:61%;left:2%;top:11%;padding:23px}
-  .art-sheet--mid strong{font-size:29px;line-height:1.05;margin-top:53px;max-width:250px}
-  .art-sheet--front{width:74%;height:38%;right:2%;bottom:4%;padding:18px}
-  .art-sheet--front .tiny{font-size:8px}
-  .art-sheet--front h3{font-size:20px;line-height:1.1;margin:18px 0 6px;max-width:235px}
-  .art-sheet--front p{font-size:10px;line-height:1.32;max-width:220px}
-  .art-tab{left:18px;bottom:10px;padding:7px 12px 7px 14px;font-size:7px}
-  .art-stamp{right:13px;top:13px;width:50px;height:50px}
-
-  /* Keep the Marvel wordmark readable over the mobile artwork. */
-  .visual--marvel:after{
-    left:17px;bottom:15px;z-index:5;
-    color:white;
-    font-size:27px;line-height:.84;letter-spacing:-.07em;
-    text-shadow:0 3px 12px rgba(0,0,0,.34)
-  }
-  .marvel-card{right:12%;width:104px;height:145px}
-  .case__body{padding:14px 23px 16px;min-height:0}
-  .case h3{font-size:34px}
-  .case__result{margin-top:10px;padding-top:10px;min-height:44px}
-  .botanical-title{left:20px;bottom:14px;font-size:36px}
-  .cta__card{grid-template-columns:1fr}
-  .cta__buttons{justify-content:stretch;width:100%}
-  .cta__buttons .btn{width:100%;min-width:0}
-}
-
-
-
-/* V5 spacing and responsiveness refinements */
-.art-sheet--mid strong{
-  margin-top:74px;
-  max-width:300px;
-}
-.art-sheet--front{
-  height:38%;
-  padding:22px;
-}
-.art-sheet--front h3{
-  margin:28px 0 12px;
-  max-width:255px;
-}
-.art-tab{
-  bottom:16px;
-}
-
-.case{
-  min-height:438px;
-}
-.case__meta{
-  padding:20px 24px 0;
-}
-.case__body{
-  padding:16px 24px 22px;
-}
-.case h3{
-  margin:0 0 10px;
-}
-.case__body p{
-  font-size:14px;
-  line-height:1.56;
-}
-.case__result{
-  padding-top:18px;
-}
-.case__hover{
-  padding:18px 24px;
-}
-
-.cta__card{
-  gap:34px;
-  padding:52px 54px;
-  align-items:start;
-}
-.cta__card > div:first-child{
-  max-width:760px;
-}
-.cta h2{
-  margin:14px 0 16px;
-}
-.cta p{
-  max-width:690px;
-  line-height:1.5;
-}
-.cta__buttons{
+/* V3: editorial section hierarchy and next-case alignment */
+.story{padding:52px 0 70px}
+.article{width:min(760px,100%)}
+.story-section{margin:0 0 54px}
+.story-section:last-child{margin-bottom:0}
+.section-divider{
   display:grid;
-  grid-template-columns:repeat(3, minmax(150px, 1fr));
-  gap:12px;
-  width:min(100%, 600px);
-  justify-content:start;
-  align-self:end;
-}
-.cta__buttons .btn{
-  width:100%;
-  min-width:0;
-  justify-content:center;
-}
-
-@media(min-width:721px){
-  .art-sheet--mid strong{
-    margin-top:60px;
-    max-width:320px;
-  }
-  .art-sheet--front{
-    width:61%;
-    height:33%;
-    right:5%;
-    bottom:6%;
-    padding:22px;
-  }
-  .art-sheet--front h3{
-    font-size:26px;
-    line-height:1.06;
-    margin:24px 0 0;
-    max-width:300px;
-  }
-}
-
-@media(max-width:1160px){
-  .cta__card{
-    grid-template-columns:1fr;
-  }
-  .cta__buttons{
-    width:min(100%, 720px);
-    align-self:start;
-  }
-}
-
-@media(max-width:720px){
-  .hero-art{
-    min-height:448px;
-  }
-  .art-sheet--mid{
-    width:82%;
-    height:60%;
-    left:2%;
-    top:11%;
-    padding:22px;
-  }
-  .art-sheet--mid strong{
-    font-size:28px;
-    line-height:1.02;
-    margin-top:34px;
-    max-width:220px;
-  }
-  .art-sheet--front{
-    width:74%;
-    height:31%;
-    right:2%;
-    bottom:4%;
-    padding:16px;
-  }
-  .art-sheet--front h3{
-    font-size:20px;
-    line-height:1.08;
-    margin:16px 0 0;
-    max-width:215px;
-  }
-  .art-tab{
-    font-size:7px;
-    padding:8px 12px 8px 16px;
-    bottom:12px;
-  }
-
-  .case{
-    min-height:430px;
-  }
-  .case__visual{
-    height:208px;
-  }
-  .case__meta{
-    padding:18px 20px 0;
-  }
-  .case__body{
-    padding:14px 20px 18px;
-  }
-  .case h3{
-    font-size:34px;
-    margin:0 0 8px;
-  }
-  .case__body p{
-    font-size:14px;
-    line-height:1.5;
-  }
-  .case__result{
-    padding-top:16px;
-  }
-  .case__hover{
-    padding:14px 20px;
-  }
-
-  .cta__card{
-    padding:36px 24px;
-    gap:24px;
-  }
-  .cta h2{
-    font-size:44px;
-  }
-  .cta p{
-    font-size:16px;
-    line-height:1.55;
-  }
-  .cta__buttons{
-    grid-template-columns:1fr;
-    width:100%;
-  }
-}
-
-
-
-/* V6: case-card interaction, tighter natural heights, and About section */
-.operating__feature{
-  display:flex;
-  flex-direction:column;
-}
-.operating__about-link{
-  position:relative;
-  z-index:2;
-  margin-top:auto;
-  padding-top:26px;
-  color:white;
-  font-size:12px;
-  font-weight:850;
-  letter-spacing:.02em;
-  display:inline-flex;
+  grid-template-columns:auto auto minmax(24px,1fr);
   align-items:center;
   gap:10px;
-  width:max-content;
-  border-bottom:1px solid rgba(255,255,255,.48);
-}
-.operating__about-link span{transition:transform .2s ease}
-.operating__about-link:hover span{transform:translateX(4px)}
-
-.work__grid{align-items:start}
-.case{
-  min-height:0;
-}
-.case__body{
-  flex:0;
-}
-.case__result{
-  margin-top:18px;
-  padding-top:16px;
-  border-top:1px solid var(--line);
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 36px;
-  gap:16px;
-  align-items:center;
-  min-height:62px;
-  font-size:13px;
-  font-weight:900;
-}
-.case__result:after{display:none}
-.case__result-copy{
-  display:grid;
-  grid-template-areas:"copy";
-  align-items:center;
-  min-width:0;
-}
-.case__result-primary,
-.case__result-detail{
-  grid-area:copy;
-  transition:opacity .22s ease, transform .22s ease;
-}
-.case__result-primary{opacity:1;transform:none}
-.case__result-detail{
-  opacity:0;
-  transform:translateY(7px);
-  color:var(--ultra);
-  font-size:11px;
-  line-height:1.45;
-  font-weight:800;
-  letter-spacing:.01em;
-}
-.case__arrow{
-  width:36px;
-  height:36px;
-  border:1px solid var(--line);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  transition:background .22s ease,color .22s ease,border-color .22s ease,transform .22s ease;
-}
-.case:hover .case__result-primary,
-.case:focus-visible .case__result-primary{opacity:0;transform:translateY(-7px)}
-.case:hover .case__result-detail,
-.case:focus-visible .case__result-detail{opacity:1;transform:none}
-.case:hover .case__arrow,
-.case:focus-visible .case__arrow{
-  background:var(--ink);
-  border-color:var(--ink);
-  color:white;
-  transform:translate(2px,-2px);
-}
-.case__hover{display:none!important}
-
-@media(max-width:720px){
-  .case__result{
-    grid-template-columns:minmax(0,1fr) 36px;
-    min-height:44px;
-    margin-top:10px;
-    padding-top:10px;
-  }
-  .case__result-detail{display:none}
-  .case:hover .case__result-primary,
-  .case:focus-visible .case__result-primary{opacity:1;transform:none}
-}
-
-
-
-/* V8: unified display typography */
-:root{
-  --display:"DM Serif Display", Georgia, serif;
-}
-.hero h1,
-.art-sheet--mid strong,
-.art-sheet--front h3,
-.proof__item strong,
-.section__head h2,
-.work__intro h2,
-.operating__feature h2,
-.step h3,
-.case h3,
-.capability h2,
-.cap-row strong,
-.exp-card h3,
-.cta h2{
-  font-family:var(--display);
-  letter-spacing:-.025em;
-}
-.hero h1{line-height:.98}
-.art-sheet--mid strong{line-height:1.01}
-.art-sheet--front h3,
-.step h3,
-.case h3,
-.cap-row strong,
-.exp-card h3{line-height:1.04}
-.proof__item strong,
-.section__head h2,
-.work__intro h2,
-.operating__feature h2,
-.capability h2,
-.cta h2{line-height:1.01}
-
-
-
-/* ===== Shared full-site additions ===== */
-.page-main{min-height:70vh}
-.nav__toggle{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
-.nav__toggle-lines,.nav__toggle-lines:before,.nav__toggle-lines:after{width:16px;height:1.5px;background:currentColor;display:block;position:relative;transition:.2s}
-.nav__toggle-lines:before,.nav__toggle-lines:after{content:"";position:absolute;left:0}.nav__toggle-lines:before{top:-5px}.nav__toggle-lines:after{top:5px}
-.nav__toggle[aria-expanded="true"] .nav__toggle-lines{background:transparent}.nav__toggle[aria-expanded="true"] .nav__toggle-lines:before{transform:translateY(5px) rotate(45deg)}.nav__toggle[aria-expanded="true"] .nav__toggle-lines:after{transform:translateY(-5px) rotate(-45deg)}
-
-/* About page */
-.about-hero{padding:82px 0 58px;border-bottom:1px solid var(--line)}
-.about-hero__grid{display:grid;grid-template-columns:.33fr 1.67fr;gap:70px;align-items:start}
-.about-hero h1{font-family:var(--display);font-size:clamp(58px,7vw,94px);line-height:.98;letter-spacing:-.025em;margin:0 0 24px;max-width:980px}
-.about-hero__lead{font-size:21px;line-height:1.65;color:#46515D;max-width:860px;margin:0}
-.about-story{padding:72px 0 88px}
-.about-story__grid{display:grid;grid-template-columns:250px 1fr;gap:72px;align-items:start}
-.about-rail{position:sticky;top:112px;border-top:1px solid var(--ink);padding-top:20px}
-.about-rail strong{display:block;font-family:var(--display);font-size:28px;line-height:1.08;margin-bottom:14px}
-.about-rail p{font-size:13px;color:var(--muted);line-height:1.65;margin:0}
-.about-copy{max-width:890px}
-.about-copy__intro{font-size:22px;line-height:1.7;color:#3F4954;margin:0 0 52px}
-.about-chapter{display:grid;grid-template-columns:72px 1fr;gap:26px;padding:42px 0;border-top:1px solid var(--line)}
-.about-chapter__num{font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--ultra);padding-top:9px}
-.about-chapter h2{font-family:var(--display);font-size:43px;line-height:1.04;letter-spacing:-.02em;margin:0 0 18px}
-.about-chapter p{font-size:17px;color:#535E69;margin:0 0 20px;line-height:1.78}.about-chapter p:last-child{margin-bottom:0}
-.about-close{font-family:var(--display);font-size:36px;line-height:1.18;margin:48px 0 0;padding-top:38px;border-top:1px solid var(--ink)}
-
-/* Case-study detail pages */
-.detail-hero{padding:52px 0 72px;border-bottom:1px solid var(--line);overflow:hidden}
-.back-link{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:850;color:var(--muted);margin-bottom:44px}.back-link:hover{color:var(--ultra)}
-.detail-hero__grid{display:grid;grid-template-columns:1.03fr .97fr;gap:64px;align-items:center}
-.detail-hero h1{font-family:var(--display);font-size:clamp(56px,6.3vw,90px);line-height:.96;letter-spacing:-.025em;margin:16px 0 22px;max-width:780px}
-.detail-lead{font-size:19px;line-height:1.62;color:#4E5965;max-width:720px;margin:0 0 34px}
-.detail-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.detail-fact{border-top:1px solid var(--line-dark);padding-top:14px}.detail-fact b{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.17em;color:var(--ultra);margin-bottom:7px}.detail-fact span{font-size:13px;color:var(--muted);line-height:1.4}
-.detail-art{min-height:500px;border:1px solid var(--line);border-radius:34px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
-.detail-art__label{position:absolute;left:28px;top:26px;z-index:4;font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:900}
-.detail-art__stamp{position:absolute;right:22px;top:22px;width:64px;height:64px;border:2px solid currentColor;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:9px;line-height:1.45;font-weight:900;opacity:.38;z-index:5;transform:rotate(7deg)}
-.detail-art--marvel{background:linear-gradient(145deg,#111827,#273460 56%,#44203D);color:white}.detail-art--marvel:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-55px;top:80px;background:var(--vermilion);box-shadow:-178px 145px 0 -76px var(--sand)}.detail-art--marvel:after{content:"MARVEL\A COLLECT";white-space:pre;position:absolute;left:34px;bottom:40px;font-family:"Arial Black",Arial,sans-serif;font-size:64px;line-height:.8;letter-spacing:-.085em;color:white}.detail-marvel-card{position:absolute;right:24%;bottom:-28px;width:190px;height:270px;background:#F8F4EC;border:12px solid white;transform:rotate(8deg);box-shadow:0 28px 55px rgba(0,0,0,.34)}.detail-marvel-card:before{content:"";position:absolute;inset:20px;background:linear-gradient(145deg,#D94A2F,#2D3FAF);border-radius:50% 50% 38% 62%/55% 40% 60% 45%}.detail-marvel-card:after{content:"LIMITED RELEASE";position:absolute;left:18px;right:18px;bottom:16px;border-top:1px solid #B9B0A5;padding-top:7px;font-size:8px;letter-spacing:.14em;font-weight:900;color:#6D655E}
-.detail-art--tricon{background:linear-gradient(145deg,#D6EBE5,#95C8BD);color:#25413C}.detail-art--tricon:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;left:-120px;bottom:-310px;border:2px solid rgba(37,65,60,.25);box-shadow:0 0 0 80px rgba(255,255,255,.22),0 0 0 160px rgba(255,255,255,.1)}.detail-art--tricon:after{content:"40K";position:absolute;right:34px;bottom:20px;font-family:var(--display);font-size:118px;line-height:1;letter-spacing:-.055em}.detail-phone{position:absolute;width:170px;height:300px;left:41%;top:75px;background:#15202C;border-radius:34px;padding:12px;transform:rotate(-6deg);box-shadow:0 24px 45px rgba(24,47,46,.28)}.detail-phone:before{content:"";position:absolute;inset:20px 13px 14px;background:white;border-radius:24px}.detail-phone:after{content:"PAYMENT\A READY";white-space:pre;position:absolute;left:36px;top:102px;color:#1A302D;font-size:12px;font-weight:900;letter-spacing:.13em;line-height:1.55}
-.detail-art--quidd{background:linear-gradient(145deg,#F0DDB8,#D9B76F);color:#514522}.detail-art--quidd:before{content:"";position:absolute;width:200px;height:280px;left:33%;top:80px;border-radius:28px;background:var(--ultra);transform:rotate(-9deg);box-shadow:28px 28px 0 rgba(255,255,255,.7),56px 56px 0 rgba(23,27,34,.13)}.detail-art--quidd:after{content:"QUIDD";position:absolute;right:34px;bottom:28px;font-family:var(--display);font-style:italic;font-size:85px;letter-spacing:-.055em}.detail-seal{position:absolute;left:30px;bottom:36px;width:95px;height:95px;border:2px solid rgba(81,69,34,.32);border-radius:50%;display:grid;place-items:center;text-align:center;font-size:9px;line-height:1.55;letter-spacing:.15em;font-weight:900;transform:rotate(-9deg)}
-.detail-art--cryptkins{background:#DCE8E2;color:#30433F}.detail-botanical{position:absolute;inset:0;width:100%;height:100%}.detail-cryptkins-title{position:absolute;left:36px;bottom:28px;font-family:var(--display);font-style:italic;font-size:78px;letter-spacing:-.04em;color:#263D38;text-shadow:0 1px 0 rgba(255,255,255,.5)}
-.detail-body{padding:78px 0 92px}
-.detail-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:76px;align-items:start}
-.detail-rail{position:sticky;top:112px}.detail-stats{display:grid;gap:12px;margin-bottom:34px}.detail-stat{background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:20px}.detail-stat strong{display:block;font-family:var(--display);font-size:30px;line-height:1.05;margin-bottom:5px}.detail-stat span{font-size:12px;color:var(--muted)}.detail-rail__label{font-size:9px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;color:var(--ultra);margin:0 0 12px}.detail-tags{display:flex;flex-wrap:wrap;gap:8px}.detail-tags span{border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:11px;color:#505B67;background:white}
-.detail-content{max-width:800px}.detail-section{padding:0 0 52px;margin:0 0 52px;border-bottom:1px solid var(--line)}.detail-section:last-child{margin-bottom:0}.detail-section h2{font-family:var(--display);font-size:46px;line-height:1.02;letter-spacing:-.022em;margin:13px 0 20px}.detail-section>p{font-size:18px;line-height:1.75;color:#505B67;margin:0}.detail-actions{display:grid;gap:0;border-top:1px solid var(--ink)}.detail-action{display:grid;grid-template-columns:58px 1fr;gap:22px;padding:28px 0;border-bottom:1px solid var(--line)}.detail-action__num{font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--ultra);padding-top:8px}.detail-action h3{font-family:var(--display);font-size:29px;line-height:1.06;margin:0 0 10px}.detail-action p{font-size:15px;line-height:1.65;color:var(--muted);margin:0}.detail-result{background:linear-gradient(145deg,var(--ultra),var(--ultra-dark));color:white;border-radius:28px;padding:34px;position:relative;overflow:hidden}.detail-result:after{content:"RF / RESULT";position:absolute;right:22px;top:18px;font-size:8px;letter-spacing:.16em;color:#C7CEFF;font-weight:900}.detail-result p{font-family:var(--display);font-size:30px;line-height:1.28;margin:0;max-width:680px}
-.detail-next{padding:58px 0;border-top:1px solid var(--line);background:white}.detail-next__inner{display:flex;align-items:center;justify-content:space-between;gap:30px}.detail-next small{font-size:9px;text-transform:uppercase;letter-spacing:.17em;color:var(--ultra);font-weight:900}.detail-next h3{font-family:var(--display);font-size:36px;line-height:1.08;margin:8px 0 0}
-
-@media(max-width:980px){
-  .detail-hero__grid,.detail-layout,.about-hero__grid,.about-story__grid{grid-template-columns:1fr}
-  .detail-art{min-height:460px}.detail-rail,.about-rail{position:static}.detail-layout{gap:42px}.about-story__grid{gap:34px}
-}
-@media(max-width:720px){
-  .nav__inner{position:relative}.nav__links{position:absolute;left:14px;right:14px;top:68px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow);display:none;flex-direction:column;align-items:stretch;gap:0}.nav__links.is-open{display:flex}.nav__links a{padding:12px 8px}.nav__toggle{display:flex}
-  .about-hero{padding:54px 0 42px}.about-hero__grid{gap:24px}.about-hero h1{font-size:49px}.about-hero__lead{font-size:17px}.about-story{padding:54px 0 66px}.about-copy__intro{font-size:19px;margin-bottom:36px}.about-chapter{grid-template-columns:1fr;gap:9px;padding:32px 0}.about-chapter h2{font-size:36px}.about-chapter p{font-size:16px;line-height:1.7}.about-close{font-size:30px}
-  .detail-hero{padding:34px 0 54px}.back-link{margin-bottom:32px}.detail-hero__grid{gap:38px}.detail-hero h1{font-size:49px}.detail-lead{font-size:17px}.detail-facts{grid-template-columns:1fr}.detail-art{min-height:390px;border-radius:26px}.detail-art__stamp{width:54px;height:54px}.detail-art--marvel:after{left:22px;bottom:24px;font-size:43px}.detail-marvel-card{right:9%;width:125px;height:180px}.detail-art--tricon:after{font-size:82px}.detail-phone{width:125px;height:225px;left:36%;top:68px}.detail-phone:after{left:28px;top:78px;font-size:9px}.detail-art--quidd:before{width:140px;height:200px;left:31%;top:78px}.detail-art--quidd:after{font-size:58px}.detail-seal{width:75px;height:75px}.detail-cryptkins-title{left:24px;bottom:22px;font-size:54px}
-  .detail-body{padding:56px 0 68px}.detail-layout{gap:34px}.detail-section{padding-bottom:40px;margin-bottom:40px}.detail-section h2{font-size:38px}.detail-section>p{font-size:16px;line-height:1.7}.detail-action{grid-template-columns:1fr;gap:8px;padding:24px 0}.detail-action h3{font-size:26px}.detail-result{padding:28px 24px}.detail-result p{font-size:25px}.detail-next__inner{align-items:flex-start;flex-direction:column}.detail-next h3{font-size:30px}
-}
-
-
-/* ===== Full-site V2.2 refinements ===== */
-/* The wordmark uses the name as written, without decorative punctuation. */
-.brand{letter-spacing:-.035em}
-
-/* Resume is a standard navigation item, consistent with the rest of the menu. */
-.nav__links a{border-radius:0}
-
-/* Homepage section sequence: 01 hero, 02 outcomes, 03 approach,
-   04 selected work, 05 capabilities, 06 contact. */
-.hero__copy:before{display:none}
-#work{position:relative}
-.section-index{
-  position:absolute;
-  right:max(24px,calc((100% - var(--max))/2));
-  top:16px;
-  z-index:3;
-  font-size:9px;
+  margin:0 0 22px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.18em;
   line-height:1;
+  text-transform:uppercase;
+}
+.section-divider__num{color:var(--vermilion)}
+.section-divider__name{white-space:nowrap}
+.section-divider__line{height:1px;background:var(--line)}
+.article p{font-size:17px;line-height:1.76}
+
+.actions{border-top:0}
+.action{
+  padding:0 0 30px;
+  margin:0 0 30px;
+  border-bottom:1px solid var(--line);
+}
+.action:last-child{margin-bottom:0}
+.action__head{
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr);
+  align-items:baseline;
+  gap:12px;
+  margin:0 0 12px;
+}
+.action__num{
+  color:var(--vermilion);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.action h3{
+  margin:0;
+  color:var(--vermilion);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:19px;
+  font-weight:800;
+  line-height:1.3;
+  letter-spacing:-.01em;
+}
+.action p{padding-left:50px}
+
+.results{margin-top:4px}
+.result-stat strong{font-size:36px}
+
+.next-case{
+  padding:52px 0 72px;
+  border-top:1px solid var(--line);
+  background:var(--paper-2);
+}
+.next-case__card{
+  position:relative;
+  display:grid;
+  gap:24px;
+  padding:28px 24px 25px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:var(--white);
+  color:var(--ink);
+  box-shadow:0 18px 48px rgba(27,34,48,.07);
+}
+.next-case__card:before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:var(--ultra);
+}
+.next-case__card .eyebrow{color:var(--ultra)}
+.next-case__card h2{
+  margin:10px 0 7px;
+  color:var(--ink);
+  font-size:clamp(27px,6vw,36px);
+  line-height:1.06;
+}
+.next-case__card p{color:var(--muted);max-width:650px}
+.next-case__card .btn{
+  width:100%;
+  border-color:var(--ultra);
+  background:var(--ultra);
+  color:white;
+}
+.next-case__card .btn:hover{background:var(--ultra-dark)}
+
+@media(max-width:520px){
+  .section-divider{grid-template-columns:auto auto 1fr;gap:8px;font-size:9px}
+  .action__head{grid-template-columns:32px minmax(0,1fr);gap:9px}
+  .action h3{font-size:18px}
+  .action p{padding-left:41px}
+}
+
+@media(min-width:700px){
+  .story{padding:68px 0 88px}
+  .story-section{margin-bottom:68px}
+  .section-divider{margin-bottom:25px}
+  .action{padding-bottom:34px;margin-bottom:34px}
+  .next-case__card{
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:end;
+    padding:34px 36px 32px;
+  }
+  .next-case__card .btn{width:auto;min-width:210px}
+}
+
+/* V4 hierarchy swap:
+   - Main section titles become larger grey headings.
+   - Action headings become compact orange number/title/rule rows.
+*/
+.section-divider{
+  display:block;
+  margin:0 0 24px;
+  color:var(--muted);
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:-.01em;
+  line-height:1.3;
+  text-transform:none;
+}
+.section-divider__num,
+.section-divider__line{
+  display:none;
+}
+.section-divider__name{
+  white-space:normal;
+}
+
+.action{
+  padding:0 0 30px;
+  margin:0 0 30px;
+  border-bottom:1px solid var(--line);
+}
+.action__head{
+  display:grid;
+  grid-template-columns:auto auto minmax(24px,1fr);
+  align-items:center;
+  gap:10px;
+  margin:0 0 16px;
+}
+.action__head::after{
+  content:"";
+  height:1px;
+  background:var(--line);
+}
+.action__num{
+  color:var(--vermilion);
+  font-size:10px;
   font-weight:900;
   letter-spacing:.18em;
+  line-height:1;
+}
+.action h3{
+  margin:0;
+  color:var(--vermilion);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:10px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:.18em;
   text-transform:uppercase;
+  white-space:nowrap;
+}
+.action p{
+  padding-left:0;
+}
+
+@media(max-width:520px){
+  .section-divider{
+    margin-bottom:20px;
+    font-size:18px;
+  }
+  .action__head{
+    grid-template-columns:auto minmax(0,auto) minmax(18px,1fr);
+    gap:8px;
+  }
+  .action__num,
+  .action h3{
+    font-size:9px;
+  }
+  .action h3{
+    white-space:normal;
+    line-height:1.25;
+  }
+  .action p{
+    padding-left:0;
+  }
+}
+
+@media(min-width:700px){
+  .section-divider{
+    font-size:19px;
+    margin-bottom:26px;
+  }
+}
+
+
+/* V5 section-title and response-spacing refinements */
+.section-divider{
+  display:block;
+  margin:0 0 24px;
+  color:var(--ultra);
+  font-family:"DM Serif Display",Georgia,serif;
+  font-size:clamp(25px,4.2vw,30px);
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-.018em;
+  text-transform:none;
+}
+.section-divider__num,
+.section-divider__line{
+  display:none;
+}
+.section-divider__name{
+  white-space:normal;
+}
+
+.action{
+  padding:0;
+  margin:0 0 34px;
+  border-bottom:0;
+}
+.action:last-child{
+  margin-bottom:0;
+}
+.action__head{
+  margin-bottom:14px;
+}
+.action p{
+  padding-left:0;
+}
+
+@media(max-width:520px){
+  .section-divider{
+    margin-bottom:20px;
+    font-size:25px;
+  }
+  .action{
+    margin-bottom:29px;
+  }
+}
+
+
+/* V6 final title and capabilities refinements */
+.section-divider{
+  color:var(--ink);
+  font-size:36px;
+}
+
+/* Structured capabilities treatment */
+.capabilities{
+  margin-top:30px;
+  padding-top:0;
+  border-top:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+.capabilities__head{
+  display:grid;
+  grid-template-columns:auto minmax(24px,1fr);
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+  color:var(--vermilion);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.18em;
+  line-height:1;
+  text-transform:uppercase;
+}
+.capabilities__head > span:last-child{
+  height:1px;
+  background:var(--line);
+}
+.capabilities__list{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:8px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.capabilities__list li{
+  position:relative;
+  padding-left:18px;
   color:var(--muted);
 }
-#work>.section-index{top:34px}
-
-/* Give the white stacked card a true protected text zone above the orange tab. */
-.art-sheet--front{
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  padding:21px 24px 58px;
-}
-.art-sheet--front h3{
-  margin:18px 0 0;
-  max-width:330px;
-}
-.art-tab{bottom:14px}
-
-/* Four hollow, 40%-opacity operating-model marks. The triangle and X use
-   rounded SVG strokes so their points and joins feel softer and more typographic. */
-.step:after{
-  width:124px;
-  height:124px;
-  right:-45px;
-  bottom:-52px;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  background:transparent;
-  opacity:.4;
-  box-sizing:border-box;
-}
-.step--triangle:after{
-  background:#4E9B67;
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 12 L88 82 L12 82 Z' fill='none' stroke='black' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
-  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 12 L88 82 L12 82 Z' fill='none' stroke='black' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
-}
-.step--x:after{
-  background:#3F67C7;
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M24 22 L76 78 M76 22 L24 78' fill='none' stroke='black' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
-  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M24 22 L76 78 M76 22 L24 78' fill='none' stroke='black' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
-}
-.step--circle:after{
-  border:10px solid #D6534A;
+.capabilities__list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.68em;
+  width:6px;
+  height:6px;
   border-radius:50%;
-}
-.step--square:after{
-  border:10px solid #E59A3B;
-  border-radius:20px;
-}
-.step:hover:after{transform:scale(1.08) rotate(2deg)}
-
-@media(max-width:720px){
-  .section-index{
-    right:18px;
-    top:12px;
-  }
-  #work>.section-index{top:20px}
-
-  .art-sheet--front{
-    height:34%;
-    padding:14px 16px 47px;
-  }
-  .art-sheet--front h3{
-    font-size:19px;
-    line-height:1.08;
-    margin:11px 0 0;
-    max-width:225px;
-  }
-  .art-tab{
-    bottom:9px;
-    left:13px;
-  }
-
-  .step:after{
-    width:112px;
-    height:112px;
-    right:-40px;
-    bottom:-46px;
-  }
-  .step--circle:after,
-  .step--square:after{border-width:9px}
+  background:var(--vermilion);
+  transform:translateY(-50%);
 }
 
-</style></head><body><header class="nav"><div class="wrap nav__inner"><a class="brand" href="index.html">Randall Ford</a><nav class="nav__links" id="primary-nav" aria-label="Primary"><a href="index.html#work">Work</a><a href="about.html">About</a><a href="index.html#approach">Approach</a><a href="index.html#capabilities">Capabilities</a><a href="RF-Resume-2026.pdf" target="_blank" rel="noopener">Résumé</a><a href="index.html#contact">Contact</a></nav><button class="nav__toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu"><span class="nav__toggle-lines"></span></button></div></header><main class="page-main"><section class="detail-hero"><div class="wrap"><a class="back-link" href="index.html#work">← All selected work</a><div class="detail-hero__grid"><div><div class="kicker">Tricon Residential</div><h1>Scaling Digital Onboarding for 40,000 Households</h1><p class="detail-lead">Owning the resident-app workstream inside a larger acquisition and payment-platform transition.</p><div class="detail-facts"><div class="detail-fact"><b>Mandate</b><span>Onboard 40,000 acquired households</span></div><div class="detail-fact"><b>Scope</b><span>Resident app, compliance flows, payment integration</span></div><div class="detail-fact"><b>Impact</b><span>Approximately 95% adoption in six weeks</span></div></div></div><div class="detail-art detail-art--tricon"><span class="detail-art__label">Resident app / Acquisition</span><span class="detail-art__stamp">RF<br>02</span><div class="detail-phone"></div></div></div></div></section><section class="detail-body"><div class="wrap detail-layout"><aside class="detail-rail"><div class="detail-stats"><div class="detail-stat"><strong>40,000</strong><span>households onboarded</span></div><div class="detail-stat"><strong>~95%</strong><span>adoption in six weeks</span></div></div><p class="detail-rail__label">Capabilities</p><div class="detail-tags"><span>Digital onboarding</span><span>Roadmap ownership</span><span>Requirements</span><span>Payments</span><span>Dependency management</span></div></aside><article class="detail-content"><section class="detail-section"><div class="eyebrow">The challenge</div><h2>What needed to change</h2><p>A major acquisition more than doubled Tricon’s single-family-home portfolio. Tens of thousands of residents needed to adopt unfamiliar tools, confirm required information, and establish payment methods while the resident app was simultaneously moving to a new payment integration.</p></section><section class="detail-section"><div class="eyebrow">My role</div><h2>Where I owned the work</h2><p>As Product Manager for the resident app, I owned the roadmap for the resident-facing onboarding experience and represented that workstream within the broader acquisition. The app was the primary interface for personal information, compliance steps, and first-payment setup.</p></section><section class="detail-section"><div class="eyebrow">Key actions</div><h2>How I moved it forward</h2><div class="detail-actions"><div class="detail-action"><span class="detail-action__num">01</span><div><h3>Designed from the resident perspective</h3><p>I translated research, behavioral signals, and anticipated friction into product requirements, process flowcharts, and a structured onboarding journey.</p></div></div><div class="detail-action"><span class="detail-action__num">02</span><div><h3>Owned the roadmap and design iteration</h3><p>I managed priorities and the backlog, directed iterative design work, and presented proposed experiences, tradeoffs, and risks to leadership.</p></div></div><div class="detail-action"><span class="detail-action__num">03</span><div><h3>Managed app dependencies</h3><p>I gathered needs from payments, compliance, communications, support, and finance; mapped app-related dependencies; and surfaced risks that affected the resident experience.</p></div></div><div class="detail-action"><span class="detail-action__num">04</span><div><h3>Protected knowledge transfer</h3><p>I worked with senior leaders and counterparts at the acquired company to understand existing resident processes and reduce product and transition risk.</p></div></div></div></section><section class="detail-section"><div class="eyebrow">Result</div><h2>What the work produced</h2><div class="detail-result"><p>The resident-app onboarding effort reached approximately 95% adoption across 40,000 households within six weeks. Residents completed critical transition steps, first payments were supported reliably, and the app workstream contributed to a broader platform migration with more favorable commercial terms.</p></div></section></article></div></section><section class="detail-next"><div class="wrap detail-next__inner"><div><small>Next</small><h3>Building a Licensed Digital Product Operation</h3></div><a class="btn btn--primary" href="cryptozoic-quidd.html">Continue →</a></div></section></main><footer class="footer"><div class="wrap footer__inner"><span>© <span data-year>2026</span> Randall Ford</span><span>Product · Brand · Growth</span></div></footer><script>
-(() => {
-  const toggle = document.querySelector('.nav__toggle');
-  const nav = document.querySelector('.nav__links');
-  if (toggle && nav) {
-    const close = () => { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); };
-    toggle.addEventListener('click', () => {
-      const open = !nav.classList.contains('is-open');
-      nav.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-    window.addEventListener('resize', () => { if (window.innerWidth > 720) close(); });
+@media(min-width:640px){
+  .capabilities__list{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    column-gap:30px;
   }
-  document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
-})();
-</script></body></html>
+}
+
+@media(max-width:520px){
+  .section-divider{
+    font-size:36px;
+  }
+  .capabilities__head{
+    gap:9px;
+    font-size:9px;
+  }
+}
+
+
+/* V7 tighter narrative rhythm */
+.story{
+  padding-top:46px;
+  padding-bottom:62px;
+}
+.story-section{
+  margin-bottom:42px;
+}
+.section-divider{
+  margin-bottom:16px;
+}
+.article p{
+  margin-bottom:13px;
+}
+.action{
+  margin-bottom:26px;
+}
+.action__head{
+  margin-bottom:11px;
+}
+.results{
+  margin-top:0;
+}
+.results__copy{
+  padding-top:20px;
+  padding-bottom:20px;
+}
+.capabilities{
+  margin-top:24px;
+}
+.next-case{
+  padding-top:46px;
+}
+
+@media(max-width:520px){
+  .story{
+    padding-top:40px;
+    padding-bottom:54px;
+  }
+  .story-section{
+    margin-bottom:36px;
+  }
+  .section-divider{
+    margin-bottom:14px;
+  }
+  .article p{
+    margin-bottom:12px;
+  }
+  .action{
+    margin-bottom:23px;
+  }
+}
+
+
+/* Project-specific artwork for the companion case studies */
+.project-visual{position:relative;min-height:315px;overflow:hidden;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.project-wordmark{position:absolute;left:22px;bottom:18px;z-index:7;font-family:"Arial Black",Impact,Arial,sans-serif;font-size:30px;line-height:.86;letter-spacing:-.065em;text-transform:uppercase}
+.project-wordmark small{display:block;margin-top:7px;font:800 8px/1 Inter,system-ui,sans-serif;letter-spacing:.2em}
+.tricon-visual{background:linear-gradient(145deg,#CDE5DE,#96C8BE)}
+.tricon-visual:before{content:"";position:absolute;width:315px;height:315px;border-radius:50%;left:-72px;bottom:-190px;border:1px solid rgba(23,27,34,.2);box-shadow:0 0 0 52px rgba(255,255,255,.2),0 0 0 104px rgba(255,255,255,.1)}
+.tricon-visual .visual-label,.tricon-visual .visual-stamp{color:#25413C;border-color:rgba(37,65,60,.4)}
+.tricon-phone{position:absolute;width:116px;height:202px;left:46%;top:40px;background:#15202C;border-radius:23px;padding:9px;transform:translateX(-50%) rotate(-6deg);box-shadow:0 20px 35px rgba(24,47,46,.25)}
+.tricon-phone:before{content:"";position:absolute;inset:14px 9px 12px;border-radius:15px;background:linear-gradient(#F7F9F8 0 30%,#CFE5DE 30% 58%,#FFFFFF 58%)}
+.tricon-phone:after{content:"PAY RENT";position:absolute;left:23px;right:23px;bottom:32px;padding:7px 3px;border-radius:9px;background:#2D3FAF;color:white;text-align:center;font-size:7px;font-weight:900;letter-spacing:.09em}
+.tricon-wordmark{right:20px;left:auto;bottom:13px;color:#263B3A;font-family:"DM Serif Display",Georgia,serif;font-size:68px;letter-spacing:-.05em}
+.tricon-wordmark small{text-align:right;color:#375651;font-size:8px}
+.quidd-visual{background:linear-gradient(145deg,#EBD5AF,#D8B268)}
+.quidd-visual:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 63px,rgba(23,27,34,.045) 64px)}
+.quidd-card{position:absolute;width:112px;height:158px;top:55px;left:48%;border:7px solid white;border-radius:15px;box-shadow:0 20px 32px rgba(50,37,19,.2)}
+.quidd-card--one{background:#2D3FAF;transform:translateX(-90%) rotate(-11deg)}
+.quidd-card--two{background:#D94A2F;transform:translateX(-12%) rotate(5deg)}
+.quidd-card--three{background:#D9CCEA;transform:translateX(58%) rotate(13deg)}
+.quidd-card:before{content:"";position:absolute;inset:16px;border:1px solid rgba(255,255,255,.55);border-radius:50% 40% 54% 46%}
+.quidd-wordmark{color:#2B241C;background:rgba(255,255,255,.72);padding:9px 11px 8px;border-radius:10px;font-size:31px;box-shadow:0 9px 22px rgba(76,54,24,.12)}
+.cryptkins-visual{background:linear-gradient(145deg,#DCE8E2,#BFD3C9)}
+.cryptkins-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.4),transparent 45%)}
+.leaf{position:absolute;width:92px;height:210px;border:3px solid rgba(39,72,61,.48);border-radius:90% 8% 90% 8%;transform-origin:bottom center}
+.leaf:before{content:"";position:absolute;left:50%;top:12px;bottom:12px;width:2px;background:rgba(39,72,61,.35)}
+.leaf--1{right:12%;bottom:-52px;transform:rotate(21deg)}
+.leaf--2{right:31%;bottom:-72px;transform:rotate(-2deg) scale(.86)}
+.leaf--3{right:50%;bottom:-88px;transform:rotate(-24deg) scale(.72)}
+.leaf--4{right:-4%;bottom:-92px;transform:rotate(43deg) scale(.7)}
+.cryptkins-wordmark{color:#263D38;font-family:"DM Serif Display",Georgia,serif;font-size:40px;font-style:italic;letter-spacing:-.045em;text-transform:none;text-shadow:0 1px 0 rgba(255,255,255,.5)}
+.cryptkins-wordmark small{color:#45665B;font-style:normal}
+@media(max-width:699px){.project-wordmark{left:17px;bottom:15px;font-size:27px}.tricon-wordmark{left:auto;right:17px;font-size:58px}.tricon-phone{left:41%;width:103px;height:180px}.quidd-card{width:95px;height:139px;top:62px}.cryptkins-wordmark{font-size:36px}}
+@media(min-width:700px){.project-visual{min-height:390px;border-radius:32px}.tricon-phone{width:138px;height:240px;top:56px}.tricon-wordmark{font-size:79px}.quidd-card{width:138px;height:194px;top:70px}.project-wordmark{left:28px;bottom:24px;font-size:36px}.tricon-wordmark{left:auto;right:28px}.cryptkins-wordmark{font-size:48px}.leaf{width:112px;height:265px}}
+
+</style>
+
+<meta content="marvel-case-study-v3" name="build-version"/></head>
+<body>
+<!-- BUILD: COMPANION-CASE-STUDY-TRICON-RESIDENTIAL.HTML -->
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+<div class="wrap nav__inner">
+<a class="brand" href="index.html">Randall Ford</a>
+<nav aria-label="Primary" class="nav__links" id="primary-nav">
+<a href="index.html#work">Work</a>
+<a href="about.html">About</a>
+<a href="index.html#approach">Approach</a>
+<a href="index.html#capabilities">Capabilities</a>
+<a href="RF-Resume-2026.pdf" rel="noopener" target="_blank">Résumé</a>
+<a href="index.html#contact">Contact</a>
+</nav>
+<button aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu" class="nav__toggle" type="button">☰</button>
+</div>
+</header>
+<main id="main">
+<section class="case-hero"><div class="wrap"><a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All work</a><div class="case-hero__grid"><div><p class="eyebrow">Tricon Residential</p><h1>Scaling Digital Onboarding for 40,000 Households</h1><p class="case-hero__dek">Owning the resident-app onboarding workstream through a major acquisition and payment-platform transition, reaching approximately 95% adoption in six weeks.</p><p class="case-hero__role"><strong>Role:</strong> Product Manager</p></div><div aria-label="Abstract Tricon resident-app artwork" class="project-visual tricon-visual"><span class="visual-label">Resident app / Acquisition</span><span class="visual-stamp">RF<br/>02</span><div class="tricon-phone" aria-hidden="true"></div><div class="project-wordmark tricon-wordmark">40K<small>resident onboarding</small></div></div></div></div></section>
+<section aria-label="Project summary" class="summary"><div class="wrap"><div class="summary__grid"><div class="summary__item"><span class="summary__label">Challenge</span><p>An acquisition added approximately 40,000 households who had to adopt unfamiliar tools, confirm compliance details, and set up payments on a compressed timeline—while the app’s payment platform was being replaced.</p></div><div class="summary__item"><span class="summary__label">Leadership response</span><p>Owned the resident-app onboarding workstream, translated evolving needs into product requirements and flows, and kept app dependencies aligned with the broader transition.</p></div><div class="summary__item"><span class="summary__label">Outcome</span><p>Approximately 95% adoption across 40,000 households within six weeks, with reliable first-payment processing and more favorable payment terms.</p></div></div></div></section>
+<section class="story"><div class="wrap"><article class="article">
+<section class="story-section"><div class="section-divider"><span class="section-divider__num">01</span><span class="section-divider__name">Context</span><span aria-hidden="true" class="section-divider__line"></span></div>
+<p>Tricon Residential manages single-family rental homes across multiple markets, with digital products playing a central role in how residents access services, manage their accounts, and interact with the company. During my time as Product Manager for the Tricon Resident mobile app, the company completed a major acquisition that added approximately 40,000 households and more than doubled its portfolio of single-family homes.</p>
+</section>
+<section class="story-section"><div class="section-divider"><span class="section-divider__num">02</span><span class="section-divider__name">The Problem</span><span aria-hidden="true" class="section-divider__line"></span></div>
+<p>The acquisition created an onboarding challenge at an unusual scale. Tens of thousands of residents needed to understand what was changing, access unfamiliar digital tools, confirm required account and compliance information, and establish payment methods within a compressed timeline.</p>
+<p>At the same time, the resident app was transitioning to a new payment-processing integration. Leadership had identified an opportunity to leverage the expanded portfolio to renegotiate the company’s payment contract and secure more favorable terms. Meeting the implementation deadline was therefore critical: the new platform needed to process payments from the acquired households immediately following the transition.</p>
+<p>This was not simply an adoption goal. Residents needed the app to pay rent, while the business needed the underlying infrastructure to reliably process tens of millions of dollars in transactions and meet its financial obligations.</p>
+<p>Internally, the broader transition involved product, engineering, operations, marketing, customer support, finance, accounting, HR, and acquisition teams. Requirements continued to evolve, teams had different priorities, and there was no established playbook for transitioning such a large resident population while simultaneously replacing a critical payment system.</p>
+</section>
+<section class="story-section"><div class="section-divider"><span class="section-divider__num">03</span><span class="section-divider__name">My Role</span><span aria-hidden="true" class="section-divider__line"></span></div>
+<p>As Product Manager for the resident app, I owned the roadmap for the resident-facing digital onboarding experience and represented the app workstream within the broader acquisition transition. The app was the primary interface through which residents would confirm their personal information, complete required compliance steps, and provide the payment details needed to process their first rent payment after the acquisition.</p>
+<p>The resident app was one critical part of a larger company-wide effort involving communications, customer support, staffing, finance, accounting, and other operational workstreams. I collaborated closely with those teams wherever their needs, decisions, or dependencies affected the resident experience and the app.</p>
+<p>My broader product responsibilities included product vision, user research, feature development, analytics, backlog management, and improvements to the overall resident experience.</p>
+</section>
+<section class="story-section"><div class="section-divider"><span class="section-divider__num">04</span><span class="section-divider__name">Key Actions</span><span aria-hidden="true" class="section-divider__line"></span></div><div class="actions"><div class="action"><div class="action__head"><span class="action__num">01</span><h3>Designed from the resident perspective</h3></div><p>I consistently championed the resident’s perspective: what people needed to know, where confusion or abandonment was most likely, and which steps introduced unnecessary friction. Using research, behavioral signals, and design-thinking practices, I translated those needs into product requirements, process flowcharts, prioritized improvements, and a structured onboarding journey.</p></div><div class="action"><div class="action__head"><span class="action__num">02</span><h3>Owned the resident-app roadmap</h3></div><p>I owned the resident-app roadmap and backlog, directed iterative design work, and presented proposed experiences, priorities, tradeoffs, and emerging risks to leadership. As requirements changed, I adjusted the roadmap and worked with engineering and design to keep the product experience aligned with the acquisition and payment-platform deadlines.</p></div><div class="action"><div class="action__head"><span class="action__num">03</span><h3>Managed cross-functional dependencies</h3></div><p>The app intersected with payments, compliance, resident communications, customer support, finance, and other parts of the transition. I gathered requirements from the teams involved, mapped app-related dependencies, surfaced risks, and helped resolve issues affecting the resident-facing experience. This kept the app workstream connected to the broader transition while allowing the teams responsible for other functions to manage their respective areas.</p></div><div class="action"><div class="action__head"><span class="action__num">04</span><h3>Managed sensitive knowledge transfer</h3></div><p>The work also required close collaboration with senior leadership and counterparts at the company being acquired. This was a high-stakes and sensitive transition in which we needed to capture critical institutional knowledge from people preparing to hand over their responsibilities. Building respectful, productive relationships with that team was essential to understanding existing resident processes, reducing product and transition risk, and meeting the aggressive timeline.</p></div></div></section>
+<section class="story-section"><div class="section-divider"><span class="section-divider__num">05</span><span class="section-divider__name">Outcome</span><span aria-hidden="true" class="section-divider__line"></span></div><div class="results"><div class="results__stats"><div class="result-stat"><strong>40,000</strong><span>households transitioned</span></div><div class="result-stat"><strong>~95%</strong><span>adoption within six weeks</span></div></div><div class="results__copy"><p>The resident-app onboarding effort achieved approximately 95% adoption across 40,000 households within six weeks. This enabled residents to complete critical transition steps, supported the reliable processing of their first payments, and contributed to the company’s migration to a new payment platform with more favorable commercial terms.</p><p>The work demonstrated how customer insight, empathetic stakeholder management, clear product strategy, and disciplined execution could make a critical resident-facing workstream successful within a much larger and more complex acquisition.</p></div></div><div class="capabilities"><div class="capabilities__head"><span>Capabilities demonstrated</span><span aria-hidden="true"></span></div><ul class="capabilities__list"><li>Customer insight</li><li>Product strategy</li><li>Digital onboarding</li><li>Payment-platform integration</li><li>Product requirements</li><li>Process mapping</li><li>Design direction</li><li>Roadmap and backlog ownership</li><li>Stakeholder collaboration</li><li>Dependency management</li><li>Analytics</li><li>Knowledge transfer</li><li>Execution at scale</li></ul></div></section>
+</article></div></section>
+<section class="next-case"><div class="wrap"><div class="next-case__card"><div><p class="eyebrow">Next case study / 03</p><h2>Building a Licensed Digital Product Operation</h2><p>Establishing a repeatable licensed digital-product operation across multiple entertainment brands.</p></div><a class="btn" href="cryptozoic-quidd.html">View Cryptozoic / Quidd<span aria-hidden="true">→</span></a></div></div></section>
+</main>
+<footer class="footer">
+<div class="wrap footer__inner">
+<span>© <span id="year">2026</span> Randall Ford</span>
+<span><a href="mailto:randallchford@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/randallchford/" rel="noopener" target="_blank">LinkedIn</a></span>
+</div>
+</footer>
+<script>
+    (() => {
+      const toggle = document.querySelector('.nav__toggle');
+      const nav = document.querySelector('.nav__links');
+      if (toggle && nav) {
+        const close = () => { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); };
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
+      }
+      const year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

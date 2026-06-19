@@ -1,21 +1,12 @@
-# Randall Ford Portfolio — Publish-Ready Package
+# Randall Ford Portfolio — Case Study Page Update
 
-This folder contains the complete static portfolio site.
+Upload these four HTML files to the root of the GitHub Pages repository, replacing the existing files with the same names:
 
-## Publish these files
-- `index.html` — Homepage
-- `about.html` — About
-- `marvel-collect.html` — Marvel Collect case study
-- `tricon-residential.html` — Tricon Residential case study
-- `cryptozoic-quidd.html` — Cryptozoic / Quidd case study
-- `cryptkins.html` — Cryptkins case study
-- `RF-Resume-2026.pdf` — Résumé
+- `marvel-collect.html`
+- `tricon-residential.html`
+- `cryptozoic-quidd.html`
+- `cryptkins.html`
 
-Upload those files to the root of any static web host. No build process is required. Each HTML page contains its own CSS and JavaScript, so it can also be opened locally or reviewed independently.
+These pages are self-contained: their CSS and JavaScript are embedded in each HTML file. Existing links to `index.html`, `about.html`, and `RF-Resume-2026.pdf` assume those files remain in the repository root.
 
-The `source` folder contains editable shared CSS and JavaScript for future maintenance. The live HTML pages do not depend on that folder.
-
-DM Serif Display is loaded from Google Fonts. If that request is unavailable, the site uses its defined serif fallbacks.
-
-## Final homepage numbering
-The outcomes section has no section-level `RF / 02` marker. The remaining section microbranding is `RF / 01`, `RF / 03`, `RF / 04`, `RF / 05`, and `RF / 06`. Local item numbers within outcomes, process steps, and case studies remain unchanged.
+The Marvel page is the approved V7 design. The other three pages use the same narrative hierarchy and visual system while retaining their approved Initial Deploy copy.

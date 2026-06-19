@@ -1,0 +1,61 @@
+{
+  "marvel-collect.html": {
+    "title": "Rebuilding Growth for Marvel Collect \u2014 Randall Ford",
+    "bytes": 30532,
+    "sha256": "705290916cc20126be8bd37cd5860d5b9d4108b68a5b20e5d72ef1e983892294",
+    "links": [
+      "RF-Resume-2026.pdf",
+      "about.html",
+      "index.html",
+      "index.html#approach",
+      "index.html#capabilities",
+      "index.html#contact",
+      "index.html#work",
+      "tricon-residential.html"
+    ]
+  },
+  "tricon-residential.html": {
+    "title": "Scaling Digital Onboarding for 40,000 Households \u2014 Randall Ford",
+    "bytes": 36563,
+    "sha256": "56c3b76e209c8c86fd3e0920f06d6e4b281d1dbb01c4083f2fe0416cc1ed3e51",
+    "links": [
+      "RF-Resume-2026.pdf",
+      "about.html",
+      "cryptozoic-quidd.html",
+      "index.html",
+      "index.html#approach",
+      "index.html#capabilities",
+      "index.html#contact",
+      "index.html#work"
+    ]
+  },
+  "cryptozoic-quidd.html": {
+    "title": "Building a Licensed Digital Product Operation \u2014 Randall Ford",
+    "bytes": 35834,
+    "sha256": "910aba3fe66d256761588ec3c8a8080672156385ff52635801f6b38241512a06",
+    "links": [
+      "RF-Resume-2026.pdf",
+      "about.html",
+      "cryptkins.html",
+      "index.html",
+      "index.html#approach",
+      "index.html#capabilities",
+      "index.html#contact",
+      "index.html#work"
+    ]
+  },
+  "cryptkins.html": {
+    "title": "Expanding an Original IP into a Scalable Brand \u2014 Randall Ford",
+    "bytes": 35018,
+    "sha256": "67693c865bb16bae1b7f4fa3282bce2a182f06bf0be06da1a4f34c13dba8c1dc",
+    "links": [
+      "RF-Resume-2026.pdf",
+      "about.html",
+      "index.html",
+      "index.html#approach",
+      "index.html#capabilities",
+      "index.html#contact",
+      "index.html#work"
+    ]
+  }
+}
