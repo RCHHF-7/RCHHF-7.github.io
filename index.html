@@ -949,8 +949,8 @@ img{max-width:100%;display:block}
 /* Resume is a standard navigation item, consistent with the rest of the menu. */
 .nav__links a{border-radius:0}
 
-/* Homepage section sequence: 01 hero, 02 outcomes, 03 approach,
-   04 selected work, 05 capabilities, 06 contact. */
+/* Homepage section sequence: 01 hero, 03 selected work, 04 approach,
+   05 capabilities, 06 contact. The outcomes marker is intentionally omitted. */
 .hero__copy:before{display:none}
 #work{position:relative}
 .section-index{
@@ -1046,6 +1046,299 @@ img{max-width:100%;display:block}
   .step--square:after{border-width:9px}
 }
 
+
+
+/* Publish hotfix: accessible expandable leadership capabilities */
+.cap-list{border-top:1px solid var(--ink)}
+details.cap-row{
+  display:block;
+  padding:0;
+  border-bottom:1px solid var(--line);
+}
+details.cap-row > summary{
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr) 36px;
+  gap:18px;
+  align-items:center;
+  padding:23px 0;
+  cursor:pointer;
+  list-style:none;
+  user-select:none;
+}
+details.cap-row > summary::-webkit-details-marker{display:none}
+details.cap-row > summary::marker{content:""}
+.cap-row__number{
+  font-size:10px;
+  letter-spacing:.15em;
+  font-weight:900;
+  color:var(--muted);
+}
+details.cap-row summary strong{
+  font-family:"DM Serif Display","Bodoni 72",Didot,Georgia,serif;
+  font-size:28px;
+  line-height:1.08;
+  letter-spacing:-.025em;
+}
+.cap-row__toggle{
+  width:36px;
+  height:36px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--ultra);
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.cap-row__toggle::before{
+  content:"+";
+  font-size:20px;
+  line-height:1;
+  transform:translateY(-1px);
+}
+details.cap-row[open] .cap-row__toggle{
+  background:var(--ultra);
+  border-color:var(--ultra);
+  color:white;
+  transform:rotate(180deg);
+}
+details.cap-row[open] .cap-row__toggle::before{content:"−"}
+.cap-row__detail{
+  padding:0 54px 22px 70px;
+}
+.cap-row__detail p{
+  margin:0;
+  max-width:650px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.65;
+}
+details.cap-row > summary:hover .cap-row__toggle,
+details.cap-row > summary:focus-visible .cap-row__toggle{
+  border-color:var(--ultra);
+}
+details.cap-row > summary:focus-visible{
+  outline:2px solid var(--ultra);
+  outline-offset:5px;
+  border-radius:4px;
+}
+@media(max-width:720px){
+  details.cap-row > summary{
+    grid-template-columns:38px minmax(0,1fr) 36px;
+    gap:12px;
+    padding:20px 0;
+  }
+  details.cap-row summary strong{font-size:23px}
+  .cap-row__detail{padding:0 0 20px 50px}
+  .cap-row__detail p{font-size:14px}
+}
+
+
+/* ===== Publish V1.2: hero-card and section-order corrections ===== */
+/* White card: the orange ribbon participates in layout instead of covering text. */
+.art-sheet--front{
+  height:43%;
+  padding:22px 24px 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  overflow:hidden;
+}
+.art-sheet--front h3{
+  font-size:27px;
+  line-height:1.08;
+  margin:18px 0 14px;
+  max-width:330px;
+  padding-bottom:.12em;
+}
+.art-tab{
+  position:relative;
+  left:auto;
+  bottom:auto;
+  flex:0 0 auto;
+  align-self:flex-start;
+  margin-top:auto;
+  margin-left:-24px;
+  margin-bottom:0;
+  max-width:calc(100% + 24px);
+  padding:10px 17px 10px 24px;
+  line-height:1.35;
+  border-radius:0 999px 999px 0;
+}
+
+/* Work now follows Selected Brands; Approach follows Work. */
+#work>.section-index{top:34px}
+
+@media(max-width:720px){
+  .art-sheet--front{
+    width:76%;
+    height:43%;
+    right:1%;
+    bottom:3%;
+    padding:15px 17px 13px;
+  }
+  .art-sheet--front .tiny{
+    font-size:8px;
+    line-height:1.3;
+  }
+  .art-sheet--front h3{
+    font-size:20px;
+    line-height:1.09;
+    margin:12px 0 10px;
+    max-width:230px;
+    padding-bottom:.15em;
+  }
+  .art-tab{
+    margin-left:-17px;
+    max-width:calc(100% + 17px);
+    padding:8px 12px 8px 17px;
+    font-size:7px;
+    line-height:1.35;
+    letter-spacing:.14em;
+  }
+}
+
+
+
+/* ===== Publish V1.3: responsive protected text zones for stacked hero cards ===== */
+.hero-art{
+  container-type:inline-size;
+  width:100%;
+  aspect-ratio:1.15 / 1;
+  min-height:480px;
+  max-height:620px;
+}
+.art-sheet--mid{
+  width:78%;
+  height:67%;
+  left:3%;
+  top:10%;
+  padding:0;
+}
+.art-sheet--mid small{
+  position:absolute;
+  left:8%;
+  top:10%;
+  z-index:2;
+}
+.art-sheet--mid strong{
+  position:absolute;
+  left:8%;
+  top:27%;
+  width:78%;
+  max-width:none;
+  margin:0;
+  font-size:clamp(29px,6.1cqw,44px);
+  line-height:1.01;
+  letter-spacing:-.035em;
+  z-index:2;
+}
+.art-sheet--front{
+  width:66%;
+  height:auto;
+  min-height:220px;
+  right:2.5%;
+  top:55%;
+  bottom:auto;
+  padding:20px 24px 18px;
+  overflow:visible;
+  display:flex;
+  flex-direction:column;
+}
+.art-sheet--front .tiny{
+  flex:0 0 auto;
+}
+.art-sheet--front h3{
+  flex:0 0 auto;
+  font-size:clamp(22px,4.1cqw,29px);
+  line-height:1.08;
+  margin:16px 0 18px;
+  max-width:100%;
+  padding:0 0 .18em;
+}
+.art-tab{
+  position:relative;
+  inset:auto;
+  align-self:flex-start;
+  flex:0 0 auto;
+  margin:auto 0 0 -24px;
+  max-width:calc(100% + 24px);
+  padding:10px 17px 10px 24px;
+  line-height:1.35;
+}
+
+@container (max-width:480px){
+  .art-sheet--back{width:73%;height:53%;right:-2%;top:3%}
+  .art-sheet--mid{
+    width:84%;
+    height:62%;
+    left:1%;
+    top:9%;
+  }
+  .art-sheet--mid small{left:8%;top:10%;font-size:8px}
+  .art-sheet--mid strong{
+    left:8%;
+    top:24%;
+    width:77%;
+    font-size:clamp(26px,8.2cqw,31px);
+    line-height:1.02;
+  }
+  .art-sheet--front{
+    width:78%;
+    min-height:176px;
+    right:0;
+    top:57%;
+    padding:14px 17px 12px;
+  }
+  .art-sheet--front .tiny{font-size:8px;line-height:1.3}
+  .art-sheet--front h3{
+    font-size:clamp(18px,5.4cqw,21px);
+    line-height:1.08;
+    margin:11px 0 12px;
+    padding-bottom:.18em;
+  }
+  .art-tab{
+    margin-left:-17px;
+    max-width:calc(100% + 17px);
+    padding:8px 11px 8px 17px;
+    font-size:7px;
+    line-height:1.35;
+    letter-spacing:.13em;
+  }
+  .art-stamp{right:12px;top:12px;width:48px;height:48px}
+}
+
+@container (min-width:481px) and (max-width:700px){
+  .art-sheet--mid strong{
+    top:21%;
+    width:76%;
+    font-size:clamp(30px,6.2cqw,41px);
+  }
+  .art-sheet--front{
+    width:67%;
+    top:55%;
+    min-height:200px;
+  }
+}
+
+@container (min-width:701px){
+  .art-sheet--mid{
+    width:73%;
+    height:67%;
+    left:4%;
+  }
+  .art-sheet--mid strong{
+    top:21%;
+    width:78%;
+    font-size:44px;
+  }
+  .art-sheet--front{
+    width:59%;
+    top:55%;
+    min-height:206px;
+    right:3%;
+  }
+}
+
 </style></head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -1119,42 +1412,7 @@ img{max-width:100%;display:block}
 </div>
 </div>
 </section>
-<section class="section section--cool" id="approach">
-<div class="wrap">
-<div class="operating">
-<div class="operating__feature">
-<span class="feature-index">RF / 03</span>
-<div class="eyebrow">Detailed by design</div>
-<h2>Clarity without rigidity.</h2>
-<p>The process changes with the problem. The principles stay consistent: understand the people involved, identify the real constraint, design the right response, and create the conditions for coordinated execution.</p>
-<a class="operating__about-link" href="about.html">More about how I work <span>→</span></a>
-</div>
-<div class="operating__steps">
-<article class="step step--triangle">
-<div class="step__num">01 / Listen</div>
-<h3>Read the audience</h3>
-<p>Behavior, Voice of Customer, expectations, and community signals.</p>
-</article>
-<article class="step step--x">
-<div class="step__num">02 / Diagnose</div>
-<h3>Find the constraint</h3>
-<p>Separate visible symptoms from the underlying source of friction or risk.</p>
-</article>
-<article class="step step--circle">
-<div class="step__num">03 / Structure</div>
-<h3>Design the response</h3>
-<p>Create the roadmap, requirements, workflow, and decision model the situation needs.</p>
-</article>
-<article class="step step--square">
-<div class="step__num">04 / Execute</div>
-<h3>Align the work</h3>
-<p>Build trust, resolve dependencies, and move teams toward measurable outcomes.</p>
-</article>
-</div>
-</div>
-</div>
-</section>
-<section class="section" id="work"><span class="section-index">RF / 04</span>
+<section class="section" id="work"><span class="section-index">RF / 03</span>
 <div class="wrap">
 <div class="work__intro">
 <div class="eyebrow">Selected work</div>
@@ -1277,18 +1535,47 @@ img{max-width:100%;display:block}
 </div>
 </div>
 </section>
+<section class="section section--cool" id="approach">
+<div class="wrap">
+<div class="operating">
+<div class="operating__feature">
+<span class="feature-index">RF / 04</span>
+<div class="eyebrow">Detailed by design</div>
+<h2>Clarity without rigidity.</h2>
+<p>The process changes with the problem. The principles stay consistent: understand the people involved, identify the real constraint, design the right response, and create the conditions for coordinated execution.</p>
+<a class="operating__about-link" href="about.html">More about how I work <span>→</span></a>
+</div>
+<div class="operating__steps">
+<article class="step step--triangle">
+<div class="step__num">01 / Listen</div>
+<h3>Read the audience</h3>
+<p>Behavior, Voice of Customer, expectations, and community signals.</p>
+</article>
+<article class="step step--x">
+<div class="step__num">02 / Diagnose</div>
+<h3>Find the constraint</h3>
+<p>Separate visible symptoms from the underlying source of friction or risk.</p>
+</article>
+<article class="step step--circle">
+<div class="step__num">03 / Structure</div>
+<h3>Design the response</h3>
+<p>Create the roadmap, requirements, workflow, and decision model the situation needs.</p>
+</article>
+<article class="step step--square">
+<div class="step__num">04 / Execute</div>
+<h3>Align the work</h3>
+<p>Build trust, resolve dependencies, and move teams toward measurable outcomes.</p>
+</article>
+</div>
+</div>
+</div>
+</section>
 <section class="section capability" id="capabilities">
 <div class="wrap capability__grid">
 <div>
 <div class="eyebrow">Capability index</div>
 <h2>Leadership capabilities</h2>
-<div class="cap-list">
-<div class="cap-row"><span>01</span><strong>Strategy and transformation</strong><i>+</i></div>
-<div class="cap-row"><span>02</span><strong>Audience, product, and growth</strong><i>+</i></div>
-<div class="cap-row"><span>03</span><strong>Operating systems and execution</strong><i>+</i></div>
-<div class="cap-row"><span>04</span><strong>Commercial and analytical leadership</strong><i>+</i></div>
-<div class="cap-row"><span>05</span><strong>Brand, IP, and stakeholder leadership</strong><i>+</i></div>
-</div>
+<div class="cap-list"><details class="cap-row"><summary><span class="cap-row__number">01</span><strong>Strategy and transformation</strong><span aria-hidden="true" class="cap-row__toggle"></span></summary><div class="cap-row__detail"><p>Translate ambiguous business challenges into prioritized roadmaps, operating models, and cross-functional change plans.</p></div></details><details class="cap-row"><summary><span class="cap-row__number">02</span><strong>Audience, product, and growth</strong><span aria-hidden="true" class="cap-row__toggle"></span></summary><div class="cap-row__detail"><p>Use customer behavior, Voice of Customer, experimentation, and commercial signals to shape products that improve engagement, retention, and revenue.</p></div></details><details class="cap-row"><summary><span class="cap-row__number">03</span><strong>Operating systems and execution</strong><span aria-hidden="true" class="cap-row__toggle"></span></summary><div class="cap-row__detail"><p>Create clear requirements, workflows, decision rights, and delivery cadences that help teams coordinate and move with confidence.</p></div></details><details class="cap-row"><summary><span class="cap-row__number">04</span><strong>Commercial and analytical leadership</strong><span aria-hidden="true" class="cap-row__toggle"></span></summary><div class="cap-row__detail"><p>Connect forecasting, pricing, P&amp;L thinking, performance analysis, and market context to stronger product and portfolio decisions.</p></div></details><details class="cap-row"><summary><span class="cap-row__number">05</span><strong>Brand, IP, and stakeholder leadership</strong><span aria-hidden="true" class="cap-row__toggle"></span></summary><div class="cap-row__detail"><p>Steward licensed and original IP, align licensors and internal teams, and balance creative integrity with audience and business needs.</p></div></details></div>
 </div>
 <aside class="exp-card">
 <div class="eyebrow">Specialized experience</div>
