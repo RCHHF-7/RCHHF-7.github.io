@@ -1039,7 +1039,1211 @@ img{max-width:100%;display:block}
 }
 
 .about-copy__p{font-size:17px;color:#535E69;line-height:1.78;margin:0 0 22px}
-</style></head><body><header class="nav"><div class="wrap nav__inner"><a class="brand" href="index.html">Randall Ford</a><nav class="nav__links" id="primary-nav" aria-label="Primary"><a href="index.html#work">Work</a><a href="about.html">About</a><a href="index.html#approach">Approach</a><a href="index.html#capabilities">Capabilities</a><a href="RF-Resume-2026.pdf" target="_blank" rel="noopener">Résumé</a><a href="index.html#contact">Contact</a></nav><button class="nav__toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu"><span class="nav__toggle-lines"></span></button></div></header><main class="page-main"><section class="about-hero"><div class="wrap about-hero__grid"><div><div class="kicker">About</div><div class="editorial-index" style="margin-top:12px">RF / Full story</div></div><div><h1>Listen thoughtfully, make sense of complexity, and take action to create meaningful value.</h1><p class="about-hero__lead">Product management, branding, and marketing provide countless opportunities to overcome challenges through creative problem-solving. Those opportunities have helped me develop a thoughtful, broadly informed approach that can often lead to unexpected creative solutions.</p></div></div></section><section class="about-story"><div class="wrap about-story__grid"><aside class="about-rail"><strong>The throughline</strong><p>Audience insight, strategic clarity, systems thinking, cross-functional leadership, and brand stewardship.</p></aside><article class="about-copy"><p class="about-copy__intro">Throughout my career, I&#x27;ve seized opportunities that have shaped both my perspective and my approach. I&#x27;ve worked across entertainment, gaming, digital collectibles, mobile products, licensed brands, and resident technology, but the throughline has remained consistent: listen thoughtfully, make sense of complexity, and take action to create meaningful value.</p><p class="about-copy__p">My professional path has not been entirely linear. I began in marketing, where I learned how brands communicate, how communities form around products, and how strongly people can connect with the stories, characters, and experiences they love. Working in entertainment taught me that fans are not passive consumers. They notice the details. They understand the source material. They care whether a product feels authentic, and they are not shy about offering their perspective—which can be incredibly valuable when developing products.</p><p class="about-copy__p">That customer perspective became the foundation of how I approach product work. Whether I am examining purchasing behavior in a digital collectibles app, helping residents navigate a major technology transition, or developing products around a licensed property, I begin by trying to understand the experience from the user&#x27;s side. What are they trying to accomplish? Where are they getting stuck? What expectations are they bringing with them? Which signals are hidden beneath the surface-level metrics?</p><p class="about-copy__p">Another consistent theme in my career has been stepping into situations where the path forward is unclear. I have inherited products with declining performance and no agreed-upon explanation. I have helped build new digital-product channels without established processes or ownership. I have worked through acquisitions, platform migrations, evolving requirements, and transitions in which critical knowledge or responsibility could easily have been lost.</p><p class="about-copy__p">Those are often the situations where I&#x27;ve done the work I&#x27;m most proud of. I like taking a complicated problem and giving it shape. That may mean building a forecast, mapping dependencies, creating a product roadmap, establishing a meeting cadence, clarifying ownership, or translating customer behavior into a strategy that people across the organization can understand. The system itself is not the goal. The goal is to create enough clarity to empower teams to make better decisions and execute with confidence.</p><p class="about-copy__p">That work is deeply human. A good analysis does not create change on its own. People need to believe in the direction, understand their role in it, and trust the person asking them to change how they work. Some of the most meaningful moments in my career have involved bringing calm to high-pressure conversations, earning support from skeptical stakeholders, building productive relationships across departments, and helping teams with different priorities work toward the same outcome.</p><p class="about-copy__p">My experience with major entertainment brands has also taught me the importance of stewardship. Working with properties such as Marvel, Rick and Morty, Adventure Time, Naruto, and Attack on Titan required more than following a checklist. It required understanding why each brand mattered to its audience and translating detailed creative, legal, and commercial requirements into products that felt true to the property.</p><p class="about-copy__p">I carried that same mindset into the continued development of Cryptozoic&#x27;s original Cryptkins IP. When stewardship of the brand became unclear, I saw an opportunity to help give it a stronger foundation—creating guardrails, developing new content and product concepts, and advocating for its long-term potential. That experience reinforced something I have come to believe strongly: good product leadership is not only about launching the next thing. It is also about recognizing what is worth protecting and creating the conditions for it to grow.</p><p class="about-copy__p">Across these experiences, I have become comfortable working between disciplines. I can speak with creative teams about character and visual identity, with engineers about requirements and constraints, with finance about forecasts and commercial performance, with licensors about compliance and brand integrity, and with executives about risk, strategy, and outcomes.</p><p class="about-copy__p">I bring analytical thinking, but I know that data needs a meaningful narrative. I bring process, but I do not believe process should become bureaucracy. I care about commercial results, but I also believe the most sustainable results come from understanding the people a product is meant to serve.</p><p class="about-close">At the core of my work is that same approach: listen thoughtfully, make sense of complexity, and take action to create meaningful value.</p></article></div></section><section class="cta" id="contact"><div class="wrap"><div class="cta__card"><div><div class="eyebrow" style="color:#DCE1FF">Contact</div><h2>Let’s Build Value</h2><p>I’m open to leadership roles and conversations where audience insight, strategic clarity, and cross-functional execution can make a measurable difference.</p></div><div class="cta__buttons"><a class="btn btn--light" href="mailto:randallchford@gmail.com">Email me</a><a class="btn btn--outline-light" href="https://www.linkedin.com/in/randallchford/" target="_blank" rel="noopener">LinkedIn</a><a class="btn btn--outline-light" href="RF-Resume-2026.pdf" target="_blank" rel="noopener">View résumé</a></div></div></div></section></main><footer class="footer"><div class="wrap footer__inner"><span>© <span data-year>2026</span> Randall Ford</span><span>Product · Brand · Growth</span></div></footer><script>
+
+/* ABOUT REDESIGN V1 */
+.about-refresh-hero{
+  padding:64px 0 52px;
+  border-bottom:1px solid var(--line);
+}
+.about-refresh-hero__inner{
+  max-width:980px;
+}
+.about-refresh-back{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:34px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+}
+.about-refresh-back:hover{color:var(--ultra)}
+.about-refresh-kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+  color:var(--ultra);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.about-refresh-kicker:after{
+  content:"";
+  width:72px;
+  height:1px;
+  background:var(--line);
+}
+.about-refresh-hero h1{
+  max-width:930px;
+  margin:0 0 24px;
+  color:var(--ink);
+  font-family:var(--display);
+  font-size:clamp(46px,6.6vw,76px);
+  font-weight:400;
+  line-height:1.01;
+  letter-spacing:-.025em;
+}
+.about-refresh-hero__lead{
+  max-width:860px;
+  margin:0;
+  color:#46515D;
+  font-size:19px;
+  line-height:1.68;
+}
+
+.about-refresh-story{
+  padding:58px 0 76px;
+}
+.about-refresh-content{
+  width:min(820px,100%);
+  margin-inline:auto;
+}
+.about-refresh-intro{
+  margin-bottom:52px;
+  padding-bottom:38px;
+  border-bottom:1px solid var(--line);
+}
+.about-refresh-intro p{
+  margin:0 0 16px;
+  color:#46515D;
+  font-size:17px;
+  line-height:1.72;
+}
+.about-refresh-intro p:first-child{
+  color:var(--ink);
+  font-size:20px;
+  line-height:1.62;
+}
+.about-refresh-intro p:last-child{margin-bottom:0}
+
+.about-refresh-section{
+  margin-bottom:44px;
+}
+.about-refresh-section:last-of-type{margin-bottom:0}
+.about-refresh-label{
+  display:grid;
+  grid-template-columns:auto auto minmax(24px,1fr);
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+  color:var(--vermilion);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.18em;
+  line-height:1;
+  text-transform:uppercase;
+}
+.about-refresh-label:after{
+  content:"";
+  height:1px;
+  background:var(--line);
+}
+.about-refresh-label__num{color:var(--vermilion)}
+.about-refresh-section h2{
+  margin:0 0 15px;
+  color:var(--ink);
+  font-family:var(--display);
+  font-size:36px;
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-.018em;
+}
+.about-refresh-section p{
+  margin:0 0 14px;
+  color:#535E69;
+  font-size:17px;
+  line-height:1.75;
+}
+.about-refresh-section p:last-child{margin-bottom:0}
+
+.about-refresh-close{
+  margin-top:50px;
+  padding-top:34px;
+  border-top:1px solid var(--ink);
+}
+.about-refresh-close p{
+  margin:0 0 16px;
+  color:#535E69;
+  font-size:17px;
+  line-height:1.72;
+}
+.about-refresh-close__statement{
+  margin-top:24px !important;
+  color:var(--ink) !important;
+  font-family:var(--display);
+  font-size:36px !important;
+  line-height:1.2 !important;
+  letter-spacing:-.015em;
+}
+
+@media(max-width:720px){
+  .about-refresh-hero{
+    padding:44px 0 40px;
+  }
+  .about-refresh-back{
+    margin-bottom:26px;
+  }
+  .about-refresh-hero h1{
+    font-size:44px;
+    line-height:1.02;
+    margin-bottom:20px;
+  }
+  .about-refresh-hero__lead{
+    font-size:17px;
+    line-height:1.65;
+  }
+  .about-refresh-story{
+    padding:42px 0 60px;
+  }
+  .about-refresh-intro{
+    margin-bottom:40px;
+    padding-bottom:30px;
+  }
+  .about-refresh-intro p:first-child{
+    font-size:18px;
+  }
+  .about-refresh-section{
+    margin-bottom:36px;
+  }
+  .about-refresh-section h2{
+    font-size:34px;
+    margin-bottom:13px;
+  }
+  .about-refresh-section p{
+    font-size:16px;
+    line-height:1.7;
+    margin-bottom:12px;
+  }
+  .about-refresh-close{
+    margin-top:42px;
+    padding-top:28px;
+  }
+  .about-refresh-close__statement{
+    font-size:31px !important;
+  }
+}
+
+
+/* ABOUT REDESIGN V2 — single hierarchy system */
+.about-refresh-intro{
+  margin-bottom:44px;
+  padding-bottom:0;
+  border-bottom:0;
+}
+.about-refresh-section{
+  margin-bottom:40px;
+}
+.about-refresh-label{
+  margin-bottom:16px;
+}
+.about-refresh-section h2{
+  display:none;
+}
+.about-refresh-close{
+  margin-top:42px;
+  padding-top:0;
+  border-top:0;
+}
+.about-refresh-close p:last-child{
+  margin-bottom:0;
+}
+
+@media(max-width:720px){
+  .about-refresh-intro{
+    margin-bottom:36px;
+    padding-bottom:0;
+  }
+  .about-refresh-section{
+    margin-bottom:34px;
+  }
+  .about-refresh-label{
+    margin-bottom:14px;
+  }
+  .about-refresh-close{
+    margin-top:36px;
+    padding-top:0;
+  }
+}
+
+
+/* ABOUT REDESIGN V3 — REFOCUSED */
+.about-v3-hero{
+  padding:54px 0 48px;
+}
+.about-v3-hero__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);
+  gap:36px;
+  align-items:center;
+}
+.about-v3-back{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:28px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.about-v3-back:hover{color:var(--ultra)}
+.about-v3-kicker{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+  color:var(--vermilion);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.about-v3-kicker:after{
+  content:"";
+  width:80px;
+  height:1px;
+  background:var(--line);
+}
+.about-v3-hero h1{
+  margin:0 0 18px;
+  color:var(--ink);
+  font-family:var(--display);
+  font-size:clamp(44px,6vw,72px);
+  font-weight:400;
+  line-height:.98;
+  letter-spacing:-.03em;
+}
+.about-v3-hero h1 span{display:block}
+.about-v3-hero__lead{
+  max-width:680px;
+  margin:0;
+  color:#4B5661;
+  font-size:18px;
+  line-height:1.68;
+}
+.about-v3-portrait-wrap{
+  position:relative;
+  min-height:460px;
+}
+.about-v3-portrait-wrap:before{
+  content:"";
+  position:absolute;
+  inset:24px 0 24px 48px;
+  border-radius:36px;
+  background:
+    linear-gradient(180deg, rgba(45,63,175,.08), rgba(45,63,175,.02)),
+    linear-gradient(135deg, rgba(217,74,47,.14), rgba(235,213,175,.20));
+  border:1px solid rgba(45,63,175,.14);
+}
+.about-v3-portrait-wrap:after{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  right:18px;
+  top:16px;
+  border:2px solid rgba(45,63,175,.22);
+  border-radius:50%;
+}
+.about-v3-portrait-card{
+  position:absolute;
+  inset:0 28px 0 0;
+  border-radius:40px;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,.18), transparent 0 28%),
+    linear-gradient(155deg, var(--ultra) 0%, #3046c0 55%, #24348e 100%);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.about-v3-portrait-accent{
+  position:absolute;
+  inset:auto -40px -70px auto;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+.about-v3-portrait-ring{
+  position:absolute;
+  left:-26px;
+  bottom:40px;
+  width:140px;
+  height:140px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:50%;
+}
+.about-v3-portrait{
+  position:absolute;
+  right:-8px;
+  bottom:0;
+  width:min(100%, 470px);
+  max-height:100%;
+  object-fit:contain;
+}
+.about-v3-overview{
+  padding:0 0 28px;
+}
+.about-v3-overview__card{
+  max-width:920px;
+  margin:0 auto;
+  padding:30px 32px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:rgba(255,255,255,.42);
+  box-shadow:0 10px 30px rgba(23,27,34,.04);
+}
+.about-v3-block-label{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.about-v3-block-label:after{
+  content:"";
+  flex:1 1 auto;
+  height:1px;
+  background:var(--line);
+}
+.about-v3-overview__card p{
+  margin:0 0 14px;
+  color:#4E5863;
+  font-size:17px;
+  line-height:1.72;
+}
+.about-v3-overview__card p:last-child{margin-bottom:0}
+
+.about-v3-sequence{
+  padding:18px 0 26px;
+}
+.about-v3-sequence__intro{
+  max-width:760px;
+  margin:0 auto 26px;
+}
+.about-v3-sequence__intro h2{
+  margin:0 0 12px;
+  color:var(--ink);
+  font-family:var(--display);
+  font-size:clamp(30px,3.8vw,46px);
+  font-weight:400;
+  line-height:1.06;
+  letter-spacing:-.02em;
+}
+.about-v3-sequence__intro p{
+  margin:0;
+  color:#5A6470;
+  font-size:17px;
+  line-height:1.7;
+}
+.about-v3-step{
+  width:min(820px,100%);
+  margin:0 auto 30px;
+}
+.about-v3-step:last-child{margin-bottom:0}
+.about-v3-step__label{
+  display:grid;
+  grid-template-columns:auto auto minmax(28px,1fr);
+  align-items:center;
+  gap:12px;
+  margin-bottom:10px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.about-v3-step__label:after{
+  content:"";
+  height:1px;
+  background:var(--line);
+}
+.about-v3-step__num{
+  color:var(--vermilion);
+}
+.about-v3-step__body{
+  padding-left:42px;
+}
+.about-v3-step__body p{
+  margin:0 0 12px;
+  color:#515C67;
+  font-size:17px;
+  line-height:1.72;
+}
+.about-v3-step__body p:last-child{margin-bottom:0}
+
+.about-v3-support{
+  padding:22px 0 54px;
+}
+.about-v3-support__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+.about-v3-card{
+  padding:28px 28px 26px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.35));
+}
+.about-v3-card h3{
+  margin:0 0 16px;
+  color:var(--ink);
+  font-family:var(--display);
+  font-size:34px;
+  font-weight:400;
+  line-height:1.06;
+  letter-spacing:-.02em;
+}
+.about-v3-card p{
+  margin:0 0 14px;
+  color:#55606B;
+  font-size:16px;
+  line-height:1.72;
+}
+.about-v3-card ul{
+  margin:0;
+  padding-left:1.1rem;
+}
+.about-v3-card li{
+  margin-bottom:10px;
+  color:#55606B;
+  font-size:16px;
+  line-height:1.68;
+}
+.about-v3-card li::marker{
+  color:var(--vermilion);
+}
+.about-v3-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.about-v3-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 14px;
+  border:1px solid var(--line-dark);
+  border-radius:999px;
+  color:var(--ink-2);
+  font-size:14px;
+  font-weight:700;
+  background:rgba(255,255,255,.5);
+}
+
+@media(max-width:980px){
+  .about-v3-hero__grid{
+    grid-template-columns:1fr;
+  }
+  .about-v3-portrait-wrap{
+    min-height:420px;
+    max-width:560px;
+    margin:0 auto;
+    width:100%;
+  }
+}
+@media(max-width:720px){
+  .about-v3-hero{
+    padding:42px 0 36px;
+  }
+  .about-v3-back{
+    margin-bottom:22px;
+  }
+  .about-v3-kicker{
+    margin-bottom:14px;
+  }
+  .about-v3-hero h1{
+    font-size:43px;
+    margin-bottom:16px;
+  }
+  .about-v3-hero__lead{
+    font-size:17px;
+    line-height:1.65;
+  }
+  .about-v3-portrait-wrap{
+    min-height:360px;
+    margin-top:8px;
+  }
+  .about-v3-portrait-wrap:before{
+    inset:18px 0 22px 22px;
+    border-radius:28px;
+  }
+  .about-v3-portrait-wrap:after{
+    width:128px;
+    height:128px;
+    right:10px;
+    top:10px;
+  }
+  .about-v3-portrait-card{
+    inset:0 10px 0 0;
+    border-radius:28px;
+  }
+  .about-v3-portrait{
+    width:min(100%, 350px);
+    right:-8px;
+  }
+  .about-v3-overview__card{
+    padding:24px 22px;
+    border-radius:22px;
+  }
+  .about-v3-overview__card p,
+  .about-v3-step__body p,
+  .about-v3-sequence__intro p,
+  .about-v3-card p,
+  .about-v3-card li{
+    font-size:16px;
+  }
+  .about-v3-sequence{
+    padding:10px 0 18px;
+  }
+  .about-v3-sequence__intro{
+    margin-bottom:22px;
+  }
+  .about-v3-sequence__intro h2{
+    font-size:34px;
+  }
+  .about-v3-step{
+    margin-bottom:24px;
+  }
+  .about-v3-step__body{
+    padding-left:0;
+  }
+  .about-v3-support{
+    padding:18px 0 44px;
+  }
+  .about-v3-support__grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .about-v3-card{
+    padding:24px 22px;
+    border-radius:22px;
+  }
+  .about-v3-card h3{
+    font-size:30px;
+    margin-bottom:14px;
+  }
+}
+
+
+/* ABOUT REDESIGN V4 — CONTENT + PORTRAIT UPDATE */
+.about-v3-hero h1{
+  font-size:clamp(38px,5.2vw,68px);
+}
+.about-v3-hero h1 span{
+  display:block;
+  white-space:nowrap;
+}
+.about-v3-hero__lead{
+  max-width:720px;
+}
+.about-v3-portrait-wrap{
+  min-height:500px;
+}
+.about-v3-portrait-wrap:before{
+  inset:22px 0 22px 44px;
+}
+.about-v3-portrait-card{
+  inset:0 24px 0 0;
+}
+.about-v3-portrait{
+  right:-10px;
+  bottom:0;
+  width:min(100%, 500px);
+}
+.about-v3-overview__card{
+  max-width:980px;
+}
+.about-v3-overview__card p{
+  margin:0 0 18px;
+}
+.about-v3-sequence{
+  padding:10px 0 54px;
+}
+.about-v3-sequence__intro{
+  max-width:820px;
+  margin:0 auto 24px;
+}
+.about-v3-sequence__intro p{
+  max-width:760px;
+}
+@media(max-width:980px){
+  .about-v3-portrait-wrap{
+    min-height:440px;
+  }
+}
+@media(max-width:720px){
+  .about-v3-hero h1{
+    font-size:32px;
+    line-height:1.02;
+  }
+  .about-v3-portrait-wrap{
+    min-height:380px;
+  }
+  .about-v3-portrait-wrap:before{
+    inset:18px 0 18px 18px;
+  }
+  .about-v3-portrait-card{
+    inset:0 8px 0 0;
+  }
+  .about-v3-portrait{
+    width:min(100%, 360px);
+    right:-6px;
+  }
+}
+@media(max-width:420px){
+  .about-v3-hero h1{
+    font-size:28px;
+  }
+}
+@media(max-width:360px){
+  .about-v3-hero h1{
+    font-size:25px;
+  }
+}
+
+
+/* ABOUT REDESIGN V5 — HERO AND COPY FIX */
+.about-v3-hero{overflow:hidden}
+.about-v3-hero__grid{
+  grid-template-columns:minmax(0,1.16fr) minmax(390px,.84fr);
+  gap:64px;
+  align-items:center;
+}
+.about-v3-hero h1{
+  position:relative;
+  z-index:2;
+  max-width:100%;
+  font-size:62px;
+  line-height:.98;
+}
+.about-v3-hero h1 span{white-space:nowrap}
+.about-v3-portrait-wrap{
+  min-width:0;
+  min-height:500px;
+  z-index:1;
+}
+.about-v3-portrait-card{
+  inset:0;
+}
+.about-v3-portrait{
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:contain;
+  object-position:center bottom;
+}
+@media(max-width:1500px){
+  .about-v3-hero__grid{grid-template-columns:minmax(0,1.12fr) minmax(350px,.88fr);gap:48px}
+  .about-v3-hero h1{font-size:52px}
+  .about-v3-portrait-wrap{min-height:470px}
+}
+@media(max-width:1240px){
+  .about-v3-hero__grid{grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:36px}
+  .about-v3-hero h1{font-size:42px}
+  .about-v3-portrait-wrap{min-height:430px}
+}
+@media(max-width:980px){
+  .about-v3-hero{overflow:visible}
+  .about-v3-hero__grid{grid-template-columns:1fr;gap:30px}
+  .about-v3-hero h1{font-size:clamp(23px,6vw,44px)}
+  .about-v3-portrait-wrap{min-height:420px;max-width:560px;width:100%;margin:0 auto}
+}
+@media(max-width:520px){
+  .about-v3-hero h1{font-size:clamp(21px,5.7vw,28px)}
+  .about-v3-portrait-wrap{min-height:340px}
+}
+@media(max-width:360px){
+  .about-v3-hero h1{font-size:20px}
+}
+
+
+/* ABOUT REDESIGN V6 — SELECTED OFFICE PORTRAIT */
+.about-v3-hero__grid{
+  grid-template-columns:minmax(0,1.08fr) minmax(350px,.82fr);
+  gap:54px;
+}
+.about-v3-hero__grid > *{
+  min-width:0;
+}
+.about-v3-portrait-wrap{
+  position:relative;
+  min-height:0;
+  aspect-ratio:4/5;
+}
+.about-v3-portrait-wrap:before{
+  content:"";
+  position:absolute;
+  inset:18px -16px -18px 20px;
+  border-radius:36px;
+  background:linear-gradient(145deg,rgba(235,213,175,.46),rgba(217,204,234,.32));
+  border:1px solid rgba(159,170,181,.42);
+  transform:rotate(2deg);
+}
+.about-v3-portrait-wrap:after{
+  display:none;
+}
+.about-v3-portrait-card{
+  position:absolute;
+  inset:0;
+  border-radius:34px;
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  box-shadow:0 24px 70px rgba(27,34,48,.15);
+  overflow:hidden;
+}
+.about-v3-portrait-accent,
+.about-v3-portrait-ring{
+  display:none;
+}
+.about-v3-portrait{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:cover;
+  object-position:center center;
+}
+@media(max-width:980px){
+  .about-v3-hero__grid{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+  .about-v3-portrait-wrap{
+    width:min(100%,520px);
+    margin-inline:auto;
+  }
+}
+@media(max-width:720px){
+  .about-v3-portrait-wrap{
+    min-height:0;
+    aspect-ratio:4/5;
+  }
+  .about-v3-portrait-wrap:before{
+    inset:12px -8px -12px 12px;
+    border-radius:26px;
+  }
+  .about-v3-portrait-card{
+    inset:0;
+    border-radius:26px;
+  }
+}
+
+
+/* ABOUT REDESIGN V8 — RESPONSIVE HERO METHOD CARDS */
+.about-v3-hero{
+  padding:46px 0 52px;
+}
+.about-v3-hero__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.82fr);
+  grid-template-areas:
+    "intro portrait"
+    "methods portrait";
+  grid-template-rows:auto 1fr;
+  column-gap:48px;
+  row-gap:26px;
+  align-items:stretch;
+}
+.about-v3-hero__intro{
+  grid-area:intro;
+  min-width:0;
+}
+.about-v3-hero__methods{
+  grid-area:methods;
+  min-width:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  align-self:end;
+}
+.about-v3-portrait-wrap{
+  grid-area:portrait;
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:650px;
+  aspect-ratio:auto;
+}
+.about-v3-portrait-card{
+  position:absolute;
+  inset:0;
+  border-radius:34px;
+  overflow:hidden;
+}
+.about-v3-hero h1{
+  margin:0 0 18px;
+  font-size:clamp(42px,4.4vw,60px);
+  line-height:.98;
+}
+.about-v3-hero h1 span{
+  display:block;
+  white-space:nowrap;
+}
+.about-v3-hero__lead{
+  max-width:720px;
+  margin:0;
+  color:#5A6572;
+  font-size:17px;
+  line-height:1.62;
+}
+.about-method-card{
+  position:relative;
+  min-height:176px;
+  padding:24px 24px 22px;
+  border:1px solid var(--line-dark);
+  border-radius:24px;
+  background:rgba(255,255,255,.54);
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(23,27,34,.025);
+}
+.about-method-card__label{
+  position:relative;
+  z-index:2;
+  margin:0 0 16px;
+  color:var(--ultra);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.about-method-card h2{
+  position:relative;
+  z-index:2;
+  margin:0 0 8px;
+  color:var(--ink);
+  font-family:var(--display);
+  font-size:clamp(24px,2.05vw,31px);
+  font-weight:400;
+  line-height:1.03;
+  letter-spacing:-.02em;
+}
+.about-method-card p{
+  position:relative;
+  z-index:2;
+  max-width:92%;
+  margin:0;
+  color:#596572;
+  font-size:14.5px;
+  line-height:1.55;
+}
+.about-method-card__accent{
+  position:absolute;
+  z-index:1;
+  pointer-events:none;
+  opacity:.76;
+}
+.about-method-card--listen .about-method-card__accent{
+  right:-3px;
+  bottom:-17px;
+  width:86px;
+  height:86px;
+}
+.about-method-card--listen .about-method-card__accent::before,
+.about-method-card--listen .about-method-card__accent::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:13px;
+  height:88px;
+  border-radius:999px;
+  background:#92C4A0;
+  transform-origin:bottom center;
+}
+.about-method-card--listen .about-method-card__accent::before{
+  left:19px;
+  transform:rotate(29deg);
+}
+.about-method-card--listen .about-method-card__accent::after{
+  right:17px;
+  transform:rotate(-29deg);
+}
+.about-method-card--diagnose .about-method-card__accent{
+  right:-3px;
+  bottom:-7px;
+  width:78px;
+  height:78px;
+}
+.about-method-card--diagnose .about-method-card__accent::before,
+.about-method-card--diagnose .about-method-card__accent::after{
+  content:"";
+  position:absolute;
+  left:32px;
+  top:-5px;
+  width:14px;
+  height:94px;
+  border-radius:999px;
+  background:#8FA9E7;
+}
+.about-method-card--diagnose .about-method-card__accent::before{transform:rotate(45deg)}
+.about-method-card--diagnose .about-method-card__accent::after{transform:rotate(-45deg)}
+.about-method-card--structure .about-method-card__accent{
+  right:-39px;
+  bottom:-41px;
+  width:120px;
+  height:120px;
+  border:13px solid #E98078;
+  border-radius:50%;
+}
+.about-method-card--execute .about-method-card__accent{
+  right:-31px;
+  bottom:-31px;
+  width:100px;
+  height:100px;
+  border:13px solid #E9B66C;
+  border-radius:25px 0 0 0;
+}
+@media(max-width:1240px){
+  .about-v3-hero__grid{
+    grid-template-columns:minmax(0,1.12fr) minmax(340px,.78fr);
+    column-gap:36px;
+  }
+  .about-v3-hero h1{font-size:clamp(38px,4.25vw,56px)}
+  .about-method-card{min-height:164px;padding:21px 21px 19px}
+  .about-method-card h2{font-size:clamp(22px,2.1vw,27px)}
+  .about-method-card p{font-size:14px}
+  .about-v3-portrait-wrap{min-height:610px}
+}
+@media(max-width:1020px){
+  .about-v3-hero__grid{
+    grid-template-columns:minmax(0,1fr) minmax(315px,.76fr);
+    column-gap:28px;
+  }
+  .about-v3-hero h1{font-size:36px}
+  .about-v3-hero__lead{font-size:16px}
+  .about-v3-hero__methods{gap:12px}
+  .about-method-card{min-height:158px;padding:19px 18px 17px;border-radius:20px}
+  .about-method-card__label{margin-bottom:12px}
+  .about-method-card h2{font-size:22px}
+  .about-method-card p{font-size:13.5px;line-height:1.5}
+  .about-v3-portrait-wrap{min-height:580px}
+}
+@media(max-width:860px){
+  .about-v3-hero{padding:38px 0 42px}
+  .about-v3-hero__grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "intro"
+      "portrait"
+      "methods";
+    grid-template-rows:auto;
+    gap:28px;
+  }
+  .about-v3-hero h1{font-size:clamp(38px,7vw,54px)}
+  .about-v3-portrait-wrap{
+    width:min(100%,650px);
+    height:auto;
+    min-height:0;
+    aspect-ratio:16/10;
+    margin-inline:auto;
+  }
+  .about-v3-portrait{object-position:center 28%}
+  .about-v3-hero__methods{width:min(100%,760px);margin-inline:auto}
+  .about-method-card{min-height:164px}
+}
+@media(max-width:620px){
+  .about-v3-hero h1{
+    font-size:clamp(29px,7.6vw,42px);
+    line-height:1.01;
+  }
+  .about-v3-hero__lead{font-size:16px;line-height:1.58}
+  .about-v3-portrait-wrap{aspect-ratio:4/3}
+  .about-v3-hero__methods{grid-template-columns:1fr;gap:12px}
+  .about-method-card{min-height:142px;padding:21px 21px 19px}
+  .about-method-card h2{font-size:26px}
+  .about-method-card p{font-size:14.5px;max-width:85%}
+}
+@media(max-width:420px){
+  .about-v3-hero{padding-top:32px}
+  .about-v3-back{margin-bottom:20px}
+  .about-v3-hero h1{font-size:27px;letter-spacing:-.025em}
+  .about-v3-hero__grid{gap:24px}
+  .about-v3-portrait-wrap{aspect-ratio:1.22/1}
+  .about-method-card h2{font-size:24px}
+}
+@media(max-width:360px){
+  .about-v3-hero h1{font-size:24px}
+  .about-method-card{padding:19px 18px 17px}
+  .about-method-card h2{font-size:22px}
+}
+
+
+/* V8.1 — LISTEN CARD TRIANGLE CONSISTENCY */
+.about-method-card--listen .about-method-card__accent{
+  right:-18px;
+  bottom:-25px;
+  width:112px;
+  height:100px;
+}
+.about-method-card--listen .about-method-card__accent::before,
+.about-method-card--listen .about-method-card__accent::after{
+  content:none !important;
+  display:none !important;
+}
+.about-method-card--listen .about-method-card__accent svg{
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+.about-method-card--listen .about-method-card__accent path{
+  fill:none;
+  stroke:#92C4A0;
+  stroke-width:13;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+
+</style></head><body><!-- BUILD: ABOUT-REDESIGN-V8.1-TRIANGLE-HERO-CARDS-RESPONSIVE --><header class="nav"><div class="wrap nav__inner"><a class="brand" href="index.html">Randall Ford</a><nav class="nav__links" id="primary-nav" aria-label="Primary"><a href="index.html#work">Work</a><a href="about.html">About</a><a href="index.html#approach">Approach</a><a href="index.html#capabilities">Capabilities</a><a href="RF-Resume-2026.pdf" target="_blank" rel="noopener">Résumé</a><a href="index.html#contact">Contact</a></nav><button class="nav__toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu"><span class="nav__toggle-lines"></span></button></div></header><main class="page-main">
+<section class="about-v3-hero">
+  <div class="wrap">
+    <div class="about-v3-hero__grid">
+      <div class="about-v3-hero__intro">
+        <a class="about-v3-back" href="index.html"><span aria-hidden="true">←</span> Home</a>
+        <div class="about-v3-kicker">About</div>
+        <h1>
+          <span>Listen Thoughtfully</span>
+          <span>Bring Clarity to Complexity</span>
+          <span>Create Meaningful Value</span>
+        </h1>
+        <p class="about-v3-hero__lead">I partner with teams to solve the right problems, design practical solutions, and deliver measurable outcomes.</p>
+      </div>
+
+      <div class="about-v3-portrait-wrap" aria-hidden="true">
+        <div class="about-v3-portrait-card">
+          <img class="about-v3-portrait" src="randall-office-portrait.png" alt="">
+        </div>
+      </div>
+
+      <div class="about-v3-hero__methods" aria-label="Product leadership approach">
+        <article class="about-method-card about-method-card--listen">
+          <div class="about-method-card__label">01 / Listen</div>
+          <h2>Read the audience</h2>
+          <p>Behavior, Voice of Customer, expectations, and community signals.</p>
+          <span class="about-method-card__accent" aria-hidden="true">
+            <svg viewBox="0 0 100 90" focusable="false">
+              <path d="M50 7 L94 83 L6 83 Z"></path>
+            </svg>
+          </span>
+        </article>
+        <article class="about-method-card about-method-card--diagnose">
+          <div class="about-method-card__label">02 / Diagnose</div>
+          <h2>Find the constraint</h2>
+          <p>Separate visible symptoms from the underlying source of friction or risk.</p>
+          <span class="about-method-card__accent" aria-hidden="true"></span>
+        </article>
+        <article class="about-method-card about-method-card--structure">
+          <div class="about-method-card__label">03 / Structure</div>
+          <h2>Design the response</h2>
+          <p>Create the roadmap, requirements, workflow, and decision model the situation needs.</p>
+          <span class="about-method-card__accent" aria-hidden="true"></span>
+        </article>
+        <article class="about-method-card about-method-card--execute">
+          <div class="about-method-card__label">04 / Execute</div>
+          <h2>Align the work</h2>
+          <p>Build trust, resolve dependencies, and move teams toward measurable outcomes.</p>
+          <span class="about-method-card__accent" aria-hidden="true"></span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-v3-overview">
+  <div class="wrap">
+    <div class="about-v3-overview__card">
+      <div class="about-v3-block-label">Overview</div>
+      <p>I’m a product leader with experience across product development, branding, data analysis, marketing, and licensing. Much of my career has been built at the intersection of major brands, gaming, entertainment, and digital products—helping teams better understand their audiences, identify opportunities, and turn ideas into products and experiences that create meaningful value.</p>
+      <p>I enjoy working across functions and disciplines, bringing together creative, commercial, technical, and operational perspectives to solve complex problems. Throughout my career, I’ve led production teams, managed product backlogs and roadmaps, run A/B tests, conducted Voice of Customer research, and developed new programs, processes, and operating models.</p>
+      <p>I’m particularly energized when challenges arise: when a product is underperforming, when customer behavior reveals an unmet need, or when teams need greater clarity and coordination to move forward. My approach combines audience insight, analytical rigor, and creative problem-solving to turn ambiguity into strategy and strategy into execution.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-v3-sequence">
+  <div class="wrap">
+    <div class="about-v3-sequence__intro">
+      <div class="about-v3-block-label">How I work</div>
+    </div>
+
+    <section class="about-v3-step">
+      <div class="about-v3-step__label"><span class="about-v3-step__num">01</span><span>Challenges Create Opportunities</span></div>
+      <div class="about-v3-step__body">
+        <p>Product management, branding, and marketing create constant opportunities to solve meaningful problems. Working across these disciplines has helped me develop a thoughtful, broadly informed approach—one that combines analytical rigor, audience understanding, and creative problem-solving to uncover solutions that may not be immediately obvious.</p>
+      </div>
+    </section>
+
+    <section class="about-v3-step">
+      <div class="about-v3-step__label"><span class="about-v3-step__num">02</span><span>Foundations in Audience Understanding</span></div>
+      <div class="about-v3-step__body">
+        <p>My professional path has not been entirely linear. I began in marketing, where I learned how brands communicate, how communities form around products, and how strongly people can connect with the stories, characters, and experiences they love.</p>
+        <p>Working in entertainment taught me that fans are not passive consumers. They notice when the details are right. They understand the source material, care whether a product feels authentic, and are not shy about sharing their perspective. I learned that this feedback can be incredibly valuable when developing and refining products.</p>
+      </div>
+    </section>
+
+    <section class="about-v3-step">
+      <div class="about-v3-step__label"><span class="about-v3-step__num">03</span><span>Listening as a Product Method</span></div>
+      <div class="about-v3-step__body">
+        <p>That customer perspective became the foundation of how I approach product work. Whether I am examining purchasing behavior in a digital collectibles app, helping residents navigate a major technology transition, or developing products around a licensed property, I begin by understanding the experience from the user’s side.</p>
+        <p>What are people trying to accomplish? Where are they getting stuck? What expectations are they bringing with them? Which signals are hidden beneath the surface-level metrics?</p>
+        <p>Listening thoughtfully helps reveal the needs, behaviors, and constraints that should shape the product strategy.</p>
+      </div>
+    </section>
+
+    <section class="about-v3-step">
+      <div class="about-v3-step__label"><span class="about-v3-step__num">04</span><span>Bringing Clarity to Complexity</span></div>
+      <div class="about-v3-step__body">
+        <p>Another consistent theme in my career has been stepping into situations where the path forward is unclear. I've inherited products with declining performance and no agreed-upon explanation. I have helped build new digital-product channels that had no established processes or ownership. I have worked through acquisitions, platform migrations, evolving requirements, and transitions in which critical knowledge or responsibility could easily have been lost without thoughtful processes.</p>
+        <p>These are often the situations where I have done the work I am most proud of. I enjoy taking a difficult-to-define or complicated problem and giving it shape and clarity. That may mean building a forecast, mapping dependencies, creating a product roadmap, establishing a meeting cadence, clarifying ownership, or translating customer behavior into a strategy that people across the organization can understand.</p>
+        <p>The system itself is not the goal. The goal is to create enough clarity and trust for teams to make better decisions and execute with confidence.</p>
+      </div>
+    </section>
+
+    <section class="about-v3-step">
+      <div class="about-v3-step__label"><span class="about-v3-step__num">05</span><span>Leading People</span></div>
+      <div class="about-v3-step__body">
+        <p>Work that requires those kinds of soft skills is deeply human. A strong analysis does not create change on its own. People need to believe in the direction, understand their role in it, and trust the person asking them to change how they work.</p>
+        <p>Some of the most meaningful moments in my career have involved bringing calm to high-pressure conversations, earning support from skeptical stakeholders, building productive relationships across departments, and helping teams with different priorities work toward the same outcome.</p>
+      </div>
+    </section>
+
+    <section class="about-v3-step">
+      <div class="about-v3-step__label"><span class="about-v3-step__num">06</span><span>Stewardship and Cross-Functional Leadership</span></div>
+      <div class="about-v3-step__body">
+        <p>My experience with major entertainment brands taught me the importance of stewardship. Working with properties such as Marvel, Rick and Morty, Adventure Time, Naruto, and Attack on Titan required more than following a checklist. It required understanding why each brand mattered to its audience and translating detailed creative, legal, and commercial requirements into products that felt true to the property.</p>
+        <p>Across all these experiences, I have become comfortable working between disciplines. I can speak with creative teams about character and visual identity, with engineers about requirements and constraints, with finance about forecasts and commercial performance, with licensors about compliance and brand integrity, and with executives about risk, strategy, and outcomes.</p>
+        <p>I bring analytical thinking, while recognizing that data needs a meaningful narrative to create change. I bring process, while working to ensure that process does not become bureaucracy. I care about commercial results, and I believe the most sustainable results come from products built around the needs of the people they serve.</p>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="cta__card">
+      <div>
+        <div class="eyebrow" style="color:#DCE1FF">Contact</div>
+        <h2>Let’s Build Value</h2>
+        <p>I’m open to leadership roles and conversations where audience insight, strategic clarity, and cross-functional execution can make a measurable difference.</p>
+      </div>
+      <div class="cta__buttons">
+        <a class="btn btn--light" href="mailto:randallchford@gmail.com">Email me</a>
+        <a class="btn btn--outline-light" href="https://www.linkedin.com/in/randallchford/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn--outline-light" href="RF-Resume-2026.pdf" target="_blank" rel="noopener">View résumé</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main><footer class="footer"><div class="wrap footer__inner"><span>© <span data-year>2026</span> Randall Ford</span><span>Product · Brand · Growth</span></div></footer><script>
 (() => {
   const toggle = document.querySelector('.nav__toggle');
   const nav = document.querySelector('.nav__links');
