@@ -1,28 +1,32 @@
-# Randall Ford portfolio — homepage and About page update
+# Branding site update — June 24, 2026
 
-Repository-ready replacement files and required asset:
+This package contains the two approved updates from the working session.
 
-- `index.html`
-- `about.html`
-- `randall-office-portrait.jpg`
+## Files to upload
 
-## Included approved changes
+Replace the existing files in the GitHub Pages repository root with:
+
+- `index.html` — refined Leadership Capabilities and Specialized Experience section
+- `about.html` — interactive About methodology cards
+
+No image or other asset changes are required. The updated `about.html` continues to use the portrait assets already present in the repository.
+
+## Included changes
 
 ### Homepage
-- Changed the third proof point to **“New Channel Built”**.
-- Changed all project-card upper-left visual labels to white.
-- Updated the hero to **“Let’s build lasting value.”** with the kicker **“Listen. Diagnose. Design. Execute.”**.
-- Retained **“Clarity without rigidity.”** and updated its methodology copy to use **“create the response”**.
-- Uses the more prominent **“More about my approach →”** link treatment.
-- Changed step 03 to **“03 / Design”** and **“Create the response”**.
+- Polished, centered plus/minus controls with a consistent circular shape
+- Revised five-part capability taxonomy, including **Brand and IP stewardship**
+- Expanded capability details and supporting skill tags
+- Reframed Specialized Experience as **Distinctive experience and strengths**
+- Five clearer experience groups with consistent body typography
+- Wider Specialized Experience panel and controlled desktop wrapping
+- Independent mobile stacking for both sections
 
 ### About page
-- Changed step 03 to **“03 / Design”** and **“Create the response”**.
-- Changed the micro-brand labels on all four methodology cards to the same gray treatment.
-- Included `randall-office-portrait.jpg` beside `about.html` so the profile image resolves in local previews and repository deployments.
+- Subtle card lift and shadow on desktop hover
+- Matching geometric-shape movement
+- Static touch behavior and reduced-motion support
 
-## Publishing
+## Upload note
 
-Copy all three files to the repository root. Replace the existing `index.html` and `about.html`, and ensure `randall-office-portrait.jpg` is present at the same root level as `about.html`.
-
-Existing case-study pages and `RF-Resume-2026.pdf` remain unchanged.
+Upload both HTML files together so the live site reflects the complete approved update.
