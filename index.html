@@ -1834,6 +1834,64 @@ details.cap-row > summary:focus-visible{
   color:#F7FAFF;
 }
 </style>
+
+<style id="ai-layout-containment-height-fix">
+/* Keep the visual inside its grid column and let each card size to its own content. */
+#ai-practice .ai-practice__grid{
+  align-items:start;
+}
+#ai-practice .ai-practice__visual,
+#ai-practice .ai-practice__copy{
+  min-width:0;
+  min-height:0;
+  height:auto;
+  max-width:100%;
+  align-self:start;
+}
+#ai-practice .ai-practice__visual{
+  width:100%;
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  contain:paint;
+}
+#ai-practice .ai-practice__overlay,
+#ai-practice .ai-practice__blueprint-stage{
+  overflow:hidden;
+}
+#ai-practice .ai-practice__blueprint-svg{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  overflow:hidden;
+}
+#ai-practice .ai-practice__copy{
+  justify-content:flex-start;
+  padding:clamp(36px,3vw,48px) clamp(32px,3.25vw,48px);
+}
+#ai-practice .ai-practice__copy .eyebrow{margin-bottom:14px}
+#ai-practice .ai-practice__copy h3{margin-bottom:20px}
+#ai-practice .ai-practice__copy p{
+  margin-bottom:15px;
+  line-height:1.66;
+}
+#ai-practice .ai-practice__note{
+  margin-top:4px;
+  padding-top:18px;
+}
+/* Stack before the two-column layout becomes cramped. */
+@media (max-width:1020px){
+  #ai-practice .ai-practice__grid{grid-template-columns:1fr}
+  #ai-practice .ai-practice__visual{aspect-ratio:5 / 4}
+  #ai-practice .ai-practice__copy{padding:40px 34px}
+}
+@media (max-width:720px){
+  #ai-practice .ai-practice__visual{aspect-ratio:1 / 1.08}
+  #ai-practice .ai-practice__copy{padding:32px 24px}
+  #ai-practice .ai-practice__copy h3{margin-bottom:18px}
+  #ai-practice .ai-practice__copy p{line-height:1.62}
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
