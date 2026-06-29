@@ -393,7 +393,7 @@ img{max-width:100%;display:block}
   background:var(--paper-2);border:1px solid var(--line);border-radius:30px;padding:34px;position:relative;overflow:hidden
 }
 .exp-card:after{
-  content:"RF / 05";position:absolute;right:23px;top:20px;font-size:9px;letter-spacing:.18em;color:var(--muted);font-weight:900
+  content:"RF / 06";position:absolute;right:23px;top:20px;font-size:9px;letter-spacing:.18em;color:var(--muted);font-weight:900
 }
 .exp-card h3{
   font-family:"Bodoni 72",Didot,Georgia,serif;font-size:36px;line-height:1.04;margin:15px 0 27px;letter-spacing:-.035em
@@ -412,7 +412,7 @@ img{max-width:100%;display:block}
   content:"";position:absolute;width:370px;height:370px;border-radius:50%;right:-120px;top:-210px;
   border:1px solid rgba(255,255,255,.35);box-shadow:0 0 0 70px rgba(255,255,255,.055),0 0 0 140px rgba(255,255,255,.03)
 }
-.cta__card:after{content:"RF / 06";position:absolute;right:28px;top:23px;font-size:9px;letter-spacing:.18em;color:#C7CEFF;font-weight:900}
+.cta__card:after{content:"RF / 07";position:absolute;right:28px;top:23px;font-size:9px;letter-spacing:.18em;color:#C7CEFF;font-weight:900}
 .cta h2{
   font-family:"Bodoni 72","Bodoni MT",Didot,Georgia,serif;
   font-size:61px;line-height:.98;letter-spacing:-.045em;margin:15px 0 18px
@@ -954,8 +954,9 @@ img{max-width:100%;display:block}
 /* Resume is a standard navigation item, consistent with the rest of the menu. */
 .nav__links a{border-radius:0}
 
-/* Homepage section sequence: 01 hero, 03 selected work, 04 approach,
-   05 capabilities, 06 contact. The outcomes marker is intentionally omitted. */
+/* Homepage section sequence: 01 hero, 02 selected outcomes/brands,
+   03 selected work, 04 approach, 05 AI strategy, 06 capabilities,
+   07 contact. */
 .hero__copy:before{display:none}
 #work{position:relative}
 .section-index{
@@ -1526,7 +1527,7 @@ details.cap-row > summary:focus-visible{
   flex-direction:column;
 }
 .capability .exp-card::after{
-  content:"RF / 05";
+  content:"RF / 06";
   position:absolute;
   right:30px;
   top:27px;
@@ -1903,6 +1904,25 @@ details.cap-row > summary:focus-visible{
       border-color:var(--line);
       box-shadow:0 18px 50px rgba(0,0,0,.4);
     }
+  }
+}
+
+
+/* Mobile footer: preserve two distinct alignment zones. */
+@media(max-width:720px){
+  .footer__inner{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    gap:12px;
+  }
+  .footer__inner>span:first-child{
+    min-width:0;
+  }
+  .footer__inner>span:last-child{
+    justify-self:end;
+    text-align:right;
+    white-space:nowrap;
   }
 }
 
