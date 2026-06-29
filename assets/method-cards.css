@@ -1,0 +1,227 @@
+/*
+  Shared methodology cards
+  Canonical source of truth for the Listen / Diagnose / Design / Execute cards
+  used on index.html and about.html.
+
+  The colors below are solid rendered colors rather than semi-transparent
+  overlays. That keeps the shapes visually consistent in both light and dark
+  color schemes.
+*/
+:root{
+  --method-card-surface:#FBFBF9;
+  --method-card-surface-hover:#FCFCFB;
+  --method-card-border:var(--line-dark,#9FAAB5);
+  --method-card-copy:#596572;
+  --method-card-shadow:0 8px 24px rgba(23,27,34,.025);
+  --method-card-shadow-hover:0 18px 42px rgba(27,34,48,.10);
+  --method-listen:#ABD1B5;
+  --method-diagnose:#A9BDEB;
+  --method-design:#ED9E97;
+  --method-execute:#EDC78E;
+}
+
+.method-card-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  min-width:0;
+}
+
+.method-card{
+  position:relative;
+  min-height:176px;
+  padding:24px 24px 22px;
+  border:1px solid var(--method-card-border);
+  border-radius:24px;
+  background:var(--method-card-surface);
+  color:var(--ink,#171B22);
+  overflow:hidden;
+  box-shadow:var(--method-card-shadow);
+  transform:translateY(0);
+  transition:transform .24s ease,box-shadow .24s ease,background-color .24s ease;
+  will-change:transform;
+}
+
+.method-card__label{
+  position:relative;
+  z-index:2;
+  margin:0 0 16px;
+  color:var(--muted,#66717D);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.method-card__title{
+  position:relative;
+  z-index:2;
+  margin:0 0 8px;
+  color:var(--ink,#171B22);
+  font-family:var(--display,"DM Serif Display",Georgia,serif);
+  font-size:clamp(24px,2.05vw,31px);
+  font-weight:400;
+  line-height:1.03;
+  letter-spacing:-.02em;
+}
+
+.method-card__copy{
+  position:relative;
+  z-index:2;
+  max-width:92%;
+  margin:0;
+  color:var(--method-card-copy);
+  font-size:14.5px;
+  line-height:1.55;
+}
+
+.method-card__accent{
+  position:absolute;
+  z-index:1;
+  pointer-events:none;
+  opacity:1;
+  transform-origin:50% 50%;
+  transition:transform .24s ease;
+  will-change:transform;
+}
+
+/* Listen — open triangle */
+.method-card--listen .method-card__accent{
+  right:-18px;
+  bottom:-25px;
+  width:112px;
+  height:100px;
+}
+.method-card--listen .method-card__accent svg{
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+.method-card--listen .method-card__accent path{
+  fill:none;
+  stroke:var(--method-listen);
+  stroke-width:13;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+
+/* Diagnose — X */
+.method-card--diagnose .method-card__accent{
+  right:-3px;
+  bottom:-7px;
+  width:78px;
+  height:78px;
+}
+.method-card--diagnose .method-card__accent::before,
+.method-card--diagnose .method-card__accent::after{
+  content:"";
+  position:absolute;
+  left:32px;
+  top:-5px;
+  width:14px;
+  height:94px;
+  border-radius:999px;
+  background:var(--method-diagnose);
+}
+.method-card--diagnose .method-card__accent::before{transform:rotate(45deg)}
+.method-card--diagnose .method-card__accent::after{transform:rotate(-45deg)}
+
+/* Design — circle */
+.method-card--design .method-card__accent{
+  right:-39px;
+  bottom:-41px;
+  width:120px;
+  height:120px;
+  border:13px solid var(--method-design);
+  border-radius:50%;
+}
+
+/* Execute — rounded corner */
+.method-card--execute .method-card__accent{
+  right:-31px;
+  bottom:-31px;
+  width:100px;
+  height:100px;
+  border:13px solid var(--method-execute);
+  border-radius:25px 0 0 0;
+}
+
+@media (hover:hover) and (pointer:fine){
+  .method-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--method-card-shadow-hover);
+    background:var(--method-card-surface-hover);
+  }
+  .method-card:hover .method-card__accent{
+    transform:scale(1.08) rotate(2deg);
+  }
+}
+
+@media(max-width:1240px){
+  .method-card{min-height:164px;padding:21px 21px 19px}
+  .method-card__title{font-size:clamp(22px,2.1vw,27px)}
+  .method-card__copy{font-size:14px}
+}
+
+@media(max-width:1020px){
+  .method-card-grid{gap:12px}
+  .method-card{min-height:158px;padding:19px 18px 17px;border-radius:20px}
+  .method-card__label{margin-bottom:12px}
+  .method-card__title{font-size:22px}
+  .method-card__copy{font-size:13.5px;line-height:1.5}
+}
+
+@media(max-width:860px){
+  .method-card{min-height:164px}
+}
+
+@media(max-width:620px){
+  .method-card-grid{grid-template-columns:1fr;gap:12px}
+  .method-card{min-height:142px;padding:21px 21px 19px}
+  .method-card__title{font-size:26px}
+  .method-card__copy{font-size:14.5px;max-width:85%}
+}
+
+@media(max-width:420px){
+  .method-card__title{font-size:24px}
+}
+
+@media(max-width:360px){
+  .method-card{padding:19px 18px 17px}
+  .method-card__title{font-size:22px}
+}
+
+@media (prefers-color-scheme:dark){
+  :root{
+    --method-card-surface:#171D26;
+    --method-card-surface-hover:#202733;
+    --method-card-border:#596575;
+    --method-card-copy:#A9B3C0;
+    --method-card-shadow:0 8px 24px rgba(0,0,0,.16);
+    --method-card-shadow-hover:0 18px 42px rgba(0,0,0,.34);
+  }
+}
+
+/* The About page also sets data-theme explicitly on navigation/page restore. */
+html[data-theme="dark"]{
+  --method-card-surface:#171D26;
+  --method-card-surface-hover:#202733;
+  --method-card-border:#596575;
+  --method-card-copy:#A9B3C0;
+  --method-card-shadow:0 8px 24px rgba(0,0,0,.16);
+  --method-card-shadow-hover:0 18px 42px rgba(0,0,0,.34);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .method-card,
+  .method-card__accent{
+    transition:none;
+    will-change:auto;
+  }
+  .method-card:hover,
+  .method-card:hover .method-card__accent{
+    transform:none;
+  }
+}

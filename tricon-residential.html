@@ -4,6 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="color-scheme" content="light dark"/>
+<meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#0E1116" media="(prefers-color-scheme: dark)"/>
 <title>Scaling Digital Onboarding for 40,000 Households — Randall Ford</title>
 <meta content="How Randall Ford owned the resident-app onboarding workstream through a major acquisition and payment-platform transition at Tricon Residential, reaching approximately 95% adoption in six weeks." name="description"/>
 <link href="https://rchhf-7.github.io/tricon-residential.html" rel="canonical"/>
@@ -843,6 +846,76 @@
 .cryptkins-wordmark small{color:#45665B;font-style:normal}
 @media(max-width:699px){.project-wordmark{left:17px;bottom:15px;font-size:27px}.tricon-wordmark{left:auto;right:17px;font-size:58px}.tricon-phone{left:41%;width:103px;height:180px}.quidd-card{width:95px;height:139px;top:62px}.cryptkins-wordmark{font-size:36px}}
 @media(min-width:700px){.project-visual{min-height:390px;border-radius:32px}.tricon-phone{width:138px;height:240px;top:56px}.tricon-wordmark{font-size:79px}.quidd-card{width:138px;height:194px;top:70px}.project-wordmark{left:28px;bottom:24px;font-size:36px}.tricon-wordmark{left:auto;right:28px}.cryptkins-wordmark{font-size:48px}.leaf{width:112px;height:265px}}
+
+
+/* ============================================================
+   Automatic dark mode — follows the visitor's OS/browser setting
+   ============================================================ */
+:root{color-scheme:light}
+@media (prefers-color-scheme:dark){
+  :root{
+    color-scheme:dark;
+    --paper:#0E1116;
+    --paper-2:#151A22;
+    --ink:#F3F1EB;
+    --ink-2:#D8DEE7;
+    --muted:#A9B3C0;
+    --line:#343C48;
+    --ultra:#93A2FF;
+    --ultra-dark:#3549B5;
+    --white:#171C24;
+    --shadow:0 24px 70px rgba(0,0,0,.34);
+  }
+  body{
+    background:
+      linear-gradient(rgba(14,17,22,.97),rgba(14,17,22,.97)),
+      repeating-linear-gradient(0deg,rgba(255,255,255,.027) 0 1px,transparent 1px 5px);
+  }
+  .nav{
+    background:rgba(14,17,22,.92);
+    border-bottom-color:rgba(89,101,117,.6);
+  }
+  .nav__links{
+    background:rgba(14,17,22,.985);
+  }
+  .skip:focus{
+    background:#1B222C;
+    color:var(--ink);
+    border-color:#596575;
+  }
+  .nav__toggle{color:var(--ink)}
+
+  .case-hero__dek,
+  .summary__item p,
+  .article p{
+    color:var(--muted);
+  }
+  .summary__grid,
+  .results{
+    background:#171C24;
+  }
+  .story{
+    background:rgba(21,26,34,.72);
+  }
+  .results__copy{
+    background:#151A22;
+  }
+  .next-case{
+    background:#151A22;
+  }
+  .next-case__card{
+    background:#171C24;
+    color:var(--ink);
+    box-shadow:0 18px 48px rgba(0,0,0,.26);
+  }
+  .next-case__card p{color:var(--muted)}
+  .next-case__card .btn{
+    background:#6073E8;
+    border-color:#6073E8;
+    color:white;
+  }
+  .next-case__card .btn:hover{background:#7183F4}
+}
 
 </style>
 

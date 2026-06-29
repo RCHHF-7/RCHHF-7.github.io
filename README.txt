@@ -1,22 +1,23 @@
-Personal Branding Website — upload package
+Personal Branding Site — Automatic Dark Mode
 
-Upload this folder structure together:
+This upload package includes dark-mode support for every linked HTML page:
+- index.html
+- about.html
+- marvel-collect.html
+- tricon-residential.html
+- cryptozoic-quidd.html
+- cryptkins.html
 
+The site follows each visitor's operating-system or browser appearance setting through CSS prefers-color-scheme. It switches automatically and does not require JavaScript or a manual theme button.
+
+Preserve this required structure when uploading:
 index.html
 about.html
+marvel-collect.html
+tricon-residential.html
+cryptozoic-quidd.html
+cryptkins.html
 assets/
   ai-strategy-map.svg
 
-The homepage references the SVG with a relative path:
-./assets/ai-strategy-map.svg
-
-Methodology wording in this version:
-01 / LISTEN — Interpret the signals
-02 / DIAGNOSE — Find the constraint
-03 / DESIGN — Create the response
-04 / EXECUTE — Take action
-
-The About-page hero statement remains unchanged:
-Listen Thoughtfully
-Bring Clarity to Complexity
-Create Meaningful Value
+Keep the site's existing image, résumé, icon, and other production assets in their current locations.
