@@ -1,13 +1,22 @@
-Personal Branding Site — Method Language v3
+Personal Branding Website — upload package
 
-Updated methodology card language:
-- Homepage 01 / Listen card: “Interpret the signals”
-- Homepage blue panel sentence: “interpret the signals”
-- About page 01 / Listen card: “Interpret the signals”
+Upload this folder structure together:
 
-Preserved About-page hero statement exactly:
-- Listen Thoughtfully
-- Bring Clarity to Complexity
-- Create Meaningful Value
+index.html
+about.html
+assets/
+  ai-strategy-map.svg
 
-External AI Strategy SVG remains in assets/ai-strategy-map.svg.
+The homepage references the SVG with a relative path:
+./assets/ai-strategy-map.svg
+
+Methodology wording in this version:
+01 / LISTEN — Interpret the signals
+02 / DIAGNOSE — Find the constraint
+03 / DESIGN — Create the response
+04 / EXECUTE — Take action
+
+The About-page hero statement remains unchanged:
+Listen Thoughtfully
+Bring Clarity to Complexity
+Create Meaningful Value
