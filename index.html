@@ -1606,27 +1606,6 @@ details.cap-row > summary:focus-visible{
   background:var(--paper);
   border-bottom:1px solid var(--line);
 }
-.ai-practice__label{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  min-height:36px;
-  margin-bottom:28px;
-}
-.ai-practice__label span{
-  color:var(--ultra);
-  font-size:18px;
-  font-weight:800;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-  white-space:nowrap;
-}
-.ai-practice__label:after{
-  content:"";
-  height:1px;
-  background:#C7CEDA;
-  flex:1;
-}
 .ai-practice__grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -1740,8 +1719,7 @@ details.cap-row > summary:focus-visible{
 @media(max-width:560px){
   .ai-practice{padding-top:28px}
   .ai-practice .wrap{width:calc(100% - 24px)}
-  .ai-practice__label span{font-size:14px}
-  .ai-practice__visual,
+    .ai-practice__visual,
   .ai-practice__copy{border-radius:24px}
   .ai-practice__copy{padding:30px 24px 24px}
   .ai-practice__copy-top{
@@ -1991,7 +1969,6 @@ details.cap-row > summary:focus-visible{
 
 <section class="section ai-practice" id="ai-practice" aria-labelledby="ai-practice-title">
 <div class="wrap">
-<div class="ai-practice__label"><span>AI Strategy</span></div>
 <div class="ai-practice__grid">
 <div class="ai-practice__visual">
 <img src="./assets/ai-strategy-map.svg" width="872" height="703" loading="lazy" decoding="async" alt="Blueprint system map connecting five principles of tactful AI application"/>
